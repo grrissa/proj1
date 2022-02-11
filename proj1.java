@@ -1,10 +1,10 @@
 /********************************************************************************
 Brief Summary:
-Authors:
+Authors: Marissa Esteban and Alizea Hinz
 Last Date Modified:
 *********************************************************************************/
 
-public class CaesarCipher{
+public class CaesarCipher {
     public static void main(String[]args) {
         char repeat_again = 'n';
         do {
