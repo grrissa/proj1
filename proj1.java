@@ -12,7 +12,7 @@ public class CaesarCipher {
         do {
             Scanner kv = new Scanner(System.in);
             System.out.println("Enter the individual key values (positive or negative integers, one after another in the same line with a blank between two values):");
-            // String key_values = kv.nextLine(); // idk if this is the best way to do this but just for now ig
+            String key_values = kv.nextLine(); // idk if this is the best way to do this but just for now ig
             // some how get values into an array?? best way to do this??
 
             // getting the line to encode
