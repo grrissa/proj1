@@ -6,6 +6,7 @@ Last Date Modified:
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.ArrayList;
 
 class CaesarCipher {
     public static void main(String[]args) {
@@ -27,6 +28,11 @@ class CaesarCipher {
             System.out.println("\nEnter a string to be encoded:");
             String to_encode = te.nextLine();
 
+            ArrayList<Character> chars = new ArrayList<>();
+            for (char c : to_encode.toCharArray()) {
+                chars.add(c);
+            }
+
             // propbably implement cipher here
 
             System.out.println("\nThe encoded message:");
@@ -37,12 +43,12 @@ class CaesarCipher {
             System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
             repeat_again = again.next().charAt(0);
 
-            /*
+            
             while ((repeat_again!='y')&&(repeat_again!='Y')&&(repeat_again!='n')&&(repeat_again!='N')){
                 System.out.println("\nInvalid response: /nDo you want to run the program again (y for yes and n for no)?");
                 repeat_again = again.next().charAt(0);
             }
-            */
+            
         } while (repeat_again=='y' || repeat_again=='Y');
     }
 }
