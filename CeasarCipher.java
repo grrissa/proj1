@@ -37,10 +37,12 @@ class CaesarCipher {
             System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
             repeat_again = again.next().charAt(0);
 
-            while ((repeat_again!='y')||(repeat_again!='Y')||(repeat_again!='n')||(repeat_again!='N')){
+            /*
+            while ((repeat_again!='y')&&(repeat_again!='Y')&&(repeat_again!='n')&&(repeat_again!='N')){
                 System.out.println("\nInvalid response: /nDo you want to run the program again (y for yes and n for no)?");
                 repeat_again = again.next().charAt(0);
             }
+            */
         } while (repeat_again=='y' || repeat_again=='Y');
     }
 }
