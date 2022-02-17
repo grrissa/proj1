@@ -21,6 +21,7 @@ class CaesarCipher {
             int count = 0;
             while(key.hasMoreTokens() && (count<key.countTokens())){
                 key_array[count] = Integer.parseInt(key.nextToken());
+                count += 1;
             }
 
             // getting the line to encode
