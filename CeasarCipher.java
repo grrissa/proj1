@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 
-public class CaesarCipher {
+class CaesarCipher {
     public static void main(String[]args) {
         char repeat_again = 'n';
         do {
