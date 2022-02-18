@@ -17,17 +17,17 @@ class CaesarCipher {
             System.out.println("Enter the individual key values (positive or negative integers, one after another in the same line with a blank between two values):");
             String key_values = kv.nextLine(); 
 
-            StringTokenizer key = new StringTokenizer(key_values);
-            int[] key_array = new int[key.countTokens()];
-            int count = 0;
-            while(key.hasMoreTokens() && (count<key.countTokens())){
-                key_array[count] = Integer.parseInt(key.nextToken());
-                count += 1;
+            String[] string_key_array = key_values.split("\\s");
+            int[] key_array = new int[string_key_array.length];
+            for (int i=0; i<string_key_array.length; i++){
+                key_array[i] = Integer.parseInt(string_key_array[i]);
             }
+
 
             System.out.println(key_array);
 
-            for (int i = 0; i<=key_array.length(); i++) {
+            for (int i = 0; i<key_array.length; i++) {
+
                 System.out.println(key_array[i]);
             }
 
@@ -39,25 +39,42 @@ class CaesarCipher {
             String to_encode = te.nextLine();
 
             char[] to_encode_chars = to_encode.toCharArray();
-            //ArrayList<Character> chars = new ArrayList<>();
-            //for (char c : to_encode.toCharArray()) {
-            //    chars.add(c);
-            //}
-            
+        
             String encoded = "";
+
             for (int i=0; i<= to_encode_chars.length - 1; i++){
                 char c = to_encode_chars[i];
                 int n = (int)c + (int)(key_array[i%key_array.length]);
+                int dif = 0;
+                if (n > 126) {
+                    dif = n - 126;
+                    n = 31 + dif;
+                }
+                else if (n < 32) {
+                    dif = 32-n;
+                    n = 127-dif;
+                }
                 encoded += (char)n;
             }
 
             System.out.println("\nThe encoded message:");
             System.out.println(encoded);
 
+            char[] to_decode_chars = encoded.toCharArray();
+
             String decoded = "";
-            for (int i=0; i<= to_encode_chars.length - 1; i++){
-                char c = to_encode_chars[i];
+            for (int i=0; i<= to_decode_chars.length - 1; i++){
+                char c = to_decode_chars[i];
                 int n = (int)c - (int)(key_array[i%key_array.length]);
+                int dif = 0;
+                if (n > 126) {
+                    dif = n - 126;
+                    n = 32 + dif;
+                }
+                else if (n < 32) {
+                    dif = 32-n;
+                    n = 126-dif;
+                }
                 decoded += (char)n;
             }
             System.out.println("\nThe decoded message:");
