@@ -24,7 +24,15 @@ class CaesarCipher {
                 key_array[count] = Integer.parseInt(key.nextToken());
                 count += 1;
             }
+
             System.out.println(key_array);
+
+            for (int i = 0; i<=key_array.length(); i++) {
+                System.out.println(key_array[i]);
+            }
+
+
+
             // getting the line to encode
             Scanner te = new Scanner(System.in);
             System.out.println("\nEnter a string to be encoded:");
