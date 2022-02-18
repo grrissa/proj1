@@ -24,7 +24,7 @@ public class CaesarCipher {
                 key_array[count] = Integer.parseInt(key.nextToken());
                 count += 1;
             }
-
+            System.out.println(key_array);
             // getting the line to encode
             Scanner te = new Scanner(System.in);
             System.out.println("\nEnter a string to be encoded:");
@@ -36,15 +36,16 @@ public class CaesarCipher {
             //    chars.add(c);
             //}
             
-            String decoded = "";
+            String encoded = "";
             for (int i=0; i< to_encode_chars.length; i++){
                 char c = to_encode_chars[i];
-                int n = (int)c + (int)key_array[i%key_array.length];
-                decoded = decoded + (char)n;
+                int n = (int)c + (int)(key_array[i%key_array.length]);
+                encoded += (char)n;
             }
 
             System.out.println("\nThe encoded message:");
-            System.out.println(decoded);
+            System.out.println(encoded);
+
             System.out.println("\nThe decoded message:");
 
             //asks the user whether they would like to run the program again with response validation
