@@ -14,8 +14,7 @@ class CaesarCipher {
         do {
 
             Scanner kv = new Scanner(System.in);
-            System.out.println("Enter the individual key values 
-            (positive or negative integers, one after another in the same line with a blank between two values):");
+            System.out.println("Enter the individual key values (positive or negative integers, one after another in the same line with a blank between two values):");
             String key_values = kv.nextLine(); 
 
             StringTokenizer key = new StringTokenizer(key_values);
