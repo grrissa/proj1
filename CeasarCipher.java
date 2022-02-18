@@ -44,7 +44,7 @@ class CaesarCipher {
             }
 
             System.out.println("\nThe encoded message:");
-            
+            System.out.println(encoded);
 
             System.out.println("\nThe decoded message:");
 
