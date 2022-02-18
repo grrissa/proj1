@@ -37,7 +37,7 @@ class CaesarCipher {
             //}
             
             String encoded = "";
-            for (int i=0; i<= to_encode_chars.length; i++){
+            for (int i=0; i<= to_encode_chars.length - 1; i++){
                 char c = to_encode_chars[i];
                 int n = (int)c + (int)(key_array[i%key_array.length]);
                 encoded += (char)n;
@@ -46,7 +46,14 @@ class CaesarCipher {
             System.out.println("\nThe encoded message:");
             System.out.println(encoded);
 
+            String decoded = "";
+            for (int i=0; i<= to_encode_chars.length - 1; i++){
+                char c = to_encode_chars[i];
+                int n = (int)c - (int)(key_array[i%key_array.length]);
+                decoded += (char)n;
+            }
             System.out.println("\nThe decoded message:");
+            System.out.println(decoded);
 
             //asks the user whether they would like to run the program again with response validation
             Scanner again = new Scanner(System.in);
