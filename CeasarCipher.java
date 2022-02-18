@@ -36,11 +36,11 @@ class CaesarCipher {
             //    chars.add(c);
             //}
             
-            String decoded;
+            String decoded = "";
             for (int i=0; i< to_encode_chars.length; i++){
                 char c = to_encode_chars[i];
                 int n = (int)c + (int)(key_array[i%key_array.length]);
-                decoded = decoded + (char)n;
+                decoded += (char)n;
             }
 
             System.out.println("\nThe encoded message:");
