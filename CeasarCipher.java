@@ -23,7 +23,7 @@ class CaesarCipher {
                 key_array[count] = Integer.parseInt(key.nextToken());
                 count += 1;
             }
-
+            System.out.println(key_array);
             // getting the line to encode
             Scanner te = new Scanner(System.in);
             System.out.println("\nEnter a string to be encoded:");
