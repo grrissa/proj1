@@ -12,10 +12,12 @@ class CaesarCipher {
     public static void main(String[]args) {
         char repeat_again = 'n';
         do {
+
             Scanner kv = new Scanner(System.in);
-            System.out.println("Enter the individual key values (positive or negative integers, one after another in the same line with a blank between two values):");
-            String key_values = kv.nextLine(); // idk if this is the best way to do this but just for now ig
-            // some how get values into an array?? best way to do this??
+            System.out.println("Enter the individual key values 
+            (positive or negative integers, one after another in the same line with a blank between two values):");
+            String key_values = kv.nextLine(); 
+
             StringTokenizer key = new StringTokenizer(key_values);
             int[] key_array = new int[key.countTokens()];
             int count = 0;
@@ -29,23 +31,30 @@ class CaesarCipher {
             System.out.println("\nEnter a string to be encoded:");
             String to_encode = te.nextLine();
 
-            ArrayList<Character> chars = new ArrayList<>();
-            for (char c : to_encode.toCharArray()) {
-                chars.add(c);
+            char[] to_encode_chars = to_encode.toCharArray();
+            //ArrayList<Character> chars = new ArrayList<>();
+            //for (char c : to_encode.toCharArray()) {
+            //    chars.add(c);
+            //}
+            
+            String decoded;
+            for (int i=0; i< to_encode_chars.length; i++){
+                char c = to_encode_chars[i];
+                int n = (int)c + int(key_array[i%key_array.length])
+                decoded = decoded + (char)n
             }
 
-            // propbably implement cipher here
-
             System.out.println("\nThe encoded message:");
+            System
             System.out.println("\nThe decoded message:");
 
             //asks the user whether they would like to run the program again with response validation
             Scanner again = new Scanner(System.in);
             System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
-            repeat_again = again.next().charAt(0);
+            char repeat_again = again.next().charAt(0);
 
             
-            while ((repeat_again!='y')&&(repeat_again!='Y')&&(repeat_again!='n')&&(repeat_again!='N')){
+            while ((repeat_again!='y')&&(repeat_again!='Y')&&(repeat_again!='n')&&(repeat_again!='N')) {
                 System.out.println("\nInvalid response: /nDo you want to run the program again (y for yes and n for no)?");
                 repeat_again = again.next().charAt(0);
             }
