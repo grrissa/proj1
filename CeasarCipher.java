@@ -50,7 +50,7 @@ class CaesarCipher {
             //asks the user whether they would like to run the program again with response validation
             Scanner again = new Scanner(System.in);
             System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
-            char repeat_again = again.next().charAt(0);
+            repeat_again = again.next().charAt(0);
 
             
             while ((repeat_again!='y')&&(repeat_again!='Y')&&(repeat_again!='n')&&(repeat_again!='N')) {
