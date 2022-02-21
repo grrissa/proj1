@@ -14,7 +14,8 @@ class CaesarCipher {
         do {
 
             Scanner kv = new Scanner(System.in);
-            System.out.println("Enter the individual key values (positive or negative integers, one after another in the same line with a blank between two values):");
+            System.out.println("\nEnter the individual key values (positive or negative integers, one");
+            System.out.println("after another in the same line with a blank between two values):");
             String key_values = kv.nextLine(); 
 
             String[] string_key_array = key_values.split("\\s");
@@ -41,7 +42,6 @@ class CaesarCipher {
             char[] to_encode_chars = to_encode.toCharArray();
         
             String encoded = "";
-
             for (int i=0; i<= to_encode_chars.length - 1; i++){
                 char c = to_encode_chars[i];
                 int n = (int)c + (int)(key_array[i%key_array.length]);
