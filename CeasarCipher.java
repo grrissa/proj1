@@ -32,7 +32,7 @@ class CaesarCipher {
                 System.out.println(key_array[i]);
             }
 
-
+            //SPLIT INTO DIFFERENT METHODS
 
             // getting the line to encode
             Scanner te = new Scanner(System.in);
