@@ -46,6 +46,9 @@ class CaesarCipher {
     }
 
     public static int[] create_key(String key_values) {
+    /* 
+        Method that turns our String of keys into an array of integers
+    */
         String[] string_key_array = key_values.split("\\s");
         int[] key_array = new int[string_key_array.length];
         for (int i=0; i<string_key_array.length; i++){
@@ -56,6 +59,9 @@ class CaesarCipher {
 
 
     public static String encode(String to_encode, int[] key_array) {
+    /* 
+        Method that endcodes the message using the integer array
+    */
         char[] to_encode_chars = to_encode.toCharArray();
         
         String encoded = "";
@@ -78,6 +84,9 @@ class CaesarCipher {
     }
 
     public static String decode(String encoded_string, int[] key_array) {
+    /* 
+        Method that dedcodes the encoded message using the integer array
+    */
         char[] to_decode_chars = encoded_string.toCharArray();
 
         String decoded = "";
