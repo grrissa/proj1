@@ -5,8 +5,6 @@ Last Date Modified:
 *********************************************************************************/
 
 import java.util.Scanner;
-import java.util.StringTokenizer;
-import java.util.ArrayList;
 
 class CaesarCipher {
     public static void main(String[]args) {
@@ -68,8 +66,7 @@ class CaesarCipher {
         String encoded = "";
         for (int i=0; i<= to_encode_chars.length - 1; i++){
             char c = to_encode_chars[i];
-            int key = (int)(key_array[i%key_array.length]);
-            int n = (int)c + key;
+            int n = (int)c + (int)(key_array[i%key_array.length]);
             int dif = 0;
             if (n > 126) {
                 dif = n - 126;
