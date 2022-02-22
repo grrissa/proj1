@@ -11,19 +11,44 @@ import java.util.ArrayList;
 class CaesarCipher {
     public static void main(String[]args) {
         char repeat_again = 'n';
-        do {
 
+        do {
             Scanner kv = new Scanner(System.in);
             System.out.println("\nEnter the individual key values (positive or negative integers, one");
             System.out.println("after another in the same line with a blank between two values):");
             String key_values = kv.nextLine(); 
 
-            String[] string_key_array = key_values.split("\\s");
+            String encoded_string = encode(key_values);
+            System.out.println("\nThe encoded message:");
+            System.out.println(encoded_string);
+
+            String decoded_string = decode(encoded_string)
+            System.out.println("\nThe decoded message:");
+            System.out.println(decoded);
+
+            //asks the user whether they would like to run the program again with response validation
+            Scanner again = new Scanner(System.in);
+            System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
+            repeat_again = again.next().charAt(0);
+
+            
+            while ( (toLowerCase(repeat_again)!='y') && (toLowerCase(repeat_again!='n')) ) {
+                System.out.println("\nInvalid response: /nDo you want to run the program again (y for yes and n for no)?");
+                repeat_again = again.next().charAt(0);
+            }
+            
+        } while (toLowerCase(repeat_again)=='y');
+    }
+
+
+
+    public String encode(key_values) {
+
+        String[] string_key_array = key_values.split("\\s");
             int[] key_array = new int[string_key_array.length];
             for (int i=0; i<string_key_array.length; i++){
                 key_array[i] = Integer.parseInt(string_key_array[i]);
             }
-
 
             System.out.println(key_array);
 
@@ -56,11 +81,13 @@ class CaesarCipher {
                 }
                 encoded += (char)n;
             }
+        
+        return encoded
+        
+    }
 
-            System.out.println("\nThe encoded message:");
-            System.out.println(encoded);
-
-            char[] to_decode_chars = encoded.toCharArray();
+    public String decode(encoded_string) {
+        char[] to_decode_chars = encoded_string.toCharArray();
 
             String decoded = "";
             for (int i=0; i<= to_decode_chars.length - 1; i++){
@@ -77,20 +104,6 @@ class CaesarCipher {
                 }
                 decoded += (char)n;
             }
-            System.out.println("\nThe decoded message:");
-            System.out.println(decoded);
-
-            //asks the user whether they would like to run the program again with response validation
-            Scanner again = new Scanner(System.in);
-            System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
-            repeat_again = again.next().charAt(0);
-
-            
-            while ((repeat_again!='y')&&(repeat_again!='Y')&&(repeat_again!='n')&&(repeat_again!='N')) {
-                System.out.println("\nInvalid response: /nDo you want to run the program again (y for yes and n for no)?");
-                repeat_again = again.next().charAt(0);
-            }
-            
-        } while (repeat_again=='y' || repeat_again=='Y');
+        return decoded
     }
 }
