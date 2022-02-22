@@ -27,9 +27,8 @@ class CaesarCipher {
             System.out.println("\nThe encoded message:");
             System.out.println(encoded_string);
 
-            String decoded_string = decode(encoded_string, keys);
             System.out.println("\nThe decoded message:");
-            System.out.println(decoded_string);
+            System.out.println(decode(encoded_string, keys));
 
             //asks the user whether they would like to run the program again with response validation
             Scanner again = new Scanner(System.in);
