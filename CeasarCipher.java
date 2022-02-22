@@ -57,7 +57,7 @@ class CaesarCipher {
                 System.out.println(key_array[i]);
             }
 
-
+            //SPLIT INTO DIFFERENT METHODS
 
             // getting the line to encode
             Scanner te = new Scanner(System.in);
@@ -69,7 +69,8 @@ class CaesarCipher {
             String encoded = "";
             for (int i=0; i<= to_encode_chars.length - 1; i++){
                 char c = to_encode_chars[i];
-                int n = (int)c + (int)(key_array[i%key_array.length]);
+                int key = (int)(key_array[i%key_array.length]);
+                int n = (int)c + key;
                 int dif = 0;
                 if (n > 126) {
                     dif = n - 126;
@@ -96,11 +97,11 @@ class CaesarCipher {
                 int dif = 0;
                 if (n > 126) {
                     dif = n - 126;
-                    n = 32 + dif;
+                    n = 31 + dif;
                 }
                 else if (n < 32) {
                     dif = 32-n;
-                    n = 126-dif;
+                    n = 127-dif;
                 }
                 decoded += (char)n;
             }
