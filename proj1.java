@@ -11,31 +11,33 @@ class CaesarCipher {
         char repeat_again = 'n';
 
         do {
+            // gets keys to encode with and turns it into an array of ints
             Scanner kv = new Scanner(System.in);
             System.out.println("\nEnter the individual key values (positive or negative integers, one");
             System.out.println("after another in the same line with a blank between two values):");
             String key_values = kv.nextLine(); 
+            int[] keys = create_key(key_values); //calls function to convert String to array
 
-            int[] keys = create_key(key_values);
-
-            // getting the line to encode
+            // gets line to encode 
             Scanner te = new Scanner(System.in);
             System.out.println("\nEnter a string to be encoded:");
             String to_encode = te.nextLine();
 
+            // calls method to encode the message, and prints it
             String encoded_string = encode(to_encode, keys);
             System.out.println("\nThe encoded message:");
             System.out.println(encoded_string);
 
+            // calls method to decode the encoded message and prints it
             System.out.println("\nThe decoded message:");
             System.out.println(decode(encoded_string, keys));
 
-            //asks the user whether they would like to run the program again with response validation
+            //asks the user whether they would like to run the program again
             Scanner again = new Scanner(System.in);
             System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
             repeat_again = again.next().charAt(0);
 
-            
+            //ensures user inputs a valid character
             while ((repeat_again!='y') && (repeat_again!='n') && (repeat_again!='Y') && (repeat_again!='N') ) {
                 System.out.println("\nInvalid response: /nDo you want to run the program again (y for yes and n for no)?");
                 repeat_again = again.next().charAt(0);
@@ -56,7 +58,6 @@ class CaesarCipher {
         return key_array;
     }
 
-
     public static String encode(String to_encode, int[] key_array) {
     /* 
         Method that endcodes the message using the integer array
@@ -64,10 +65,12 @@ class CaesarCipher {
         char[] to_encode_chars = to_encode.toCharArray();
         
         String encoded = "";
+        //loops throught the array of chars and changes the value according to the key, then adds to a string
         for (int i=0; i<= to_encode_chars.length - 1; i++){
             char c = to_encode_chars[i];
-            int n = (int)c + (int)(key_array[i%key_array.length]);
+            int n = (int)c + (int)(key_array[i%key_array.length]); 
             int dif = 0;
+            //ensureswrap around from ASCII values of 32-126
             if (n > 126) {
                 dif = n - 126;
                 n = 31 + dif;
@@ -79,7 +82,6 @@ class CaesarCipher {
             encoded += (char)n;
         }
         return encoded;
-        
     }
 
     public static String decode(String encoded_string, int[] key_array) {
@@ -89,10 +91,12 @@ class CaesarCipher {
         char[] to_decode_chars = encoded_string.toCharArray();
 
         String decoded = "";
+        //loops throught the array of chars and changes the value according to the key, then adds to a string
         for (int i=0; i<= to_decode_chars.length - 1; i++){
             char c = to_decode_chars[i];
             int n = (int)c - (int)(key_array[i%key_array.length]);
             int dif = 0;
+            //ensures wrap around from ASCII values of 32-126
             if (n > 126) {
                 dif = n - 126;
                 n = 31 + dif;
