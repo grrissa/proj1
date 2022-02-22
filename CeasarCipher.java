@@ -51,11 +51,6 @@ class CaesarCipher {
         for (int i=0; i<string_key_array.length; i++){
             key_array[i] = Integer.parseInt(string_key_array[i]);
         }
-    
-        for (int i = 0; i<key_array.length; i++) {
-    
-            System.out.println(key_array[i]);
-        }
         return key_array;
     }
 
