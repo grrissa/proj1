@@ -8,7 +8,7 @@ Last Date Modified: 2/22/2022
 
 import java.util.Scanner;
 
-class CaesarCipher {
+class proj1 {
     public static void main(String[]args) {
         char repeat_again = 'n';
 
