@@ -1,5 +1,7 @@
 /********************************************************************************
-Brief Summary:
+Brief Summary: Program encodes a message inputted by a user using a set of key values
+that the program uses to shift the message along the alphabet. It then displays the encoded message,
+and then displays the decoded message that the user had originally input.
 Authors: Marissa Esteban and Alizea Hinz
 Last Date Modified:
 *********************************************************************************/
@@ -11,6 +13,8 @@ class CaesarCipher {
         char repeat_again = 'n';
 
         do {
+
+            //asks the user to input the key values
             Scanner kv = new Scanner(System.in);
             System.out.println("\nEnter the individual key values (positive or negative integers, one");
             System.out.println("after another in the same line with a blank between two values):");
@@ -18,15 +22,17 @@ class CaesarCipher {
 
             int[] keys = create_key(key_values);
 
-            // getting the line to encode
+            // asks the user to input a message that is passed to encode()
             Scanner te = new Scanner(System.in);
             System.out.println("\nEnter a string to be encoded:");
             String to_encode = te.nextLine();
-
+            
+            // prints the encoded message
             String encoded_string = encode(to_encode, keys);
             System.out.println("\nThe encoded message:");
             System.out.println(encoded_string);
 
+            // passes the encoded string to decode() and decodes the encoded message
             System.out.println("\nThe decoded message:");
             System.out.println(decode(encoded_string, keys));
 
