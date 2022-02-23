@@ -41,7 +41,7 @@ class CaesarCipher {
 
             //ensures user inputs a valid character
             while ((repeat_again!='y') && (repeat_again!='n') && (repeat_again!='Y') && (repeat_again!='N') ) {
-                System.out.println("\nInvalid response: /nDo you want to run the program again (y for yes and n for no)?");
+                System.out.println("\nInvalid response: \nDo you want to run the program again (y for yes and n for no)?");
                 repeat_again = again.next().charAt(0);
             }
             
