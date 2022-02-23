@@ -1,10 +1,10 @@
-/********************************************************************************
+/*****************************************************************************************
 Brief Summary: Program encodes a message inputted by a user using a set of key values
-that the program uses to shift the message along the alphabet. It then displays the encoded message,
-and then displays the decoded message that the user had originally input.
+that the program uses to shift the message along the alphabet. It then displays the 
+encoded message, and then displays the decoded message that the user had originally input.
 Authors: Marissa Esteban and Alizea Hinz
-Last Date Modified:
-*********************************************************************************/
+Last Date Modified: 2/22/2022
+*****************************************************************************************/
 
 import java.util.Scanner;
 
@@ -45,7 +45,7 @@ class CaesarCipher {
                 repeat_again = again.next().charAt(0);
             }
             
-        } while ((repeat_again!='y') && (repeat_again!='Y'));
+        } while ((repeat_again!='n') && (repeat_again!='N'));
     }
 
     public static int[] create_key(String key_values) {
@@ -72,7 +72,7 @@ class CaesarCipher {
             char c = to_encode_chars[i];
             int n = (int)c + (int)(key_array[i%key_array.length]); 
             int dif = 0;
-            //ensureswrap around from ASCII values of 32-126
+            //ensures wrap around from ASCII values of 32-126
             if (n > 126) {
                 dif = n - 126;
                 n = 31 + dif;
