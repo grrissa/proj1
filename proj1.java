@@ -13,44 +13,24 @@ class CaesarCipher {
         char repeat_again = 'n';
 
         do {
-<<<<<<< HEAD:CeasarCipher.java
-
-            //asks the user to input the key values
-=======
             // gets keys to encode with and turns it into an array of ints
->>>>>>> a923ba7f4b2aff731ebef8cd2fc78593054a4daf:proj1.java
             Scanner kv = new Scanner(System.in);
             System.out.println("\nEnter the individual key values (positive or negative integers, one");
             System.out.println("after another in the same line with a blank between two values):");
             String key_values = kv.nextLine(); 
             int[] keys = create_key(key_values); //calls function to convert String to array
 
-<<<<<<< HEAD:CeasarCipher.java
-            int[] keys = create_key(key_values);
-
-            // asks the user to input a message that is passed to encode()
-            Scanner te = new Scanner(System.in);
-            System.out.println("\nEnter a string to be encoded:");
-            String to_encode = te.nextLine();
-            
-            // prints the encoded message
-=======
             // gets line to encode 
             Scanner te = new Scanner(System.in);
             System.out.println("\nEnter a string to be encoded:");
             String to_encode = te.nextLine();
 
             // calls method to encode the message, and prints it
->>>>>>> a923ba7f4b2aff731ebef8cd2fc78593054a4daf:proj1.java
             String encoded_string = encode(to_encode, keys);
             System.out.println("\nThe encoded message:");
             System.out.println(encoded_string);
 
-<<<<<<< HEAD:CeasarCipher.java
             // passes the encoded string to decode() and decodes the encoded message
-=======
-            // calls method to decode the encoded message and prints it
->>>>>>> a923ba7f4b2aff731ebef8cd2fc78593054a4daf:proj1.java
             System.out.println("\nThe decoded message:");
             System.out.println(decode(encoded_string, keys));
 
