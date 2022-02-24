@@ -28,7 +28,7 @@ class proj1 {
             // calls method to encode the message, and prints it
             String encoded_string = encode(to_encode, keys);
             System.out.println("\nThe encoded message:");
-            System.out.println(encoded_string);
+            System.out.println("'" + encoded_string+ "'");
 
             // passes the encoded string to decode() and decodes the encoded message
             System.out.println("\nThe decoded message:");
@@ -70,17 +70,30 @@ class proj1 {
         //loops throught the array of chars and changes the value according to the key, then adds to a string
         for (int i=0; i<= to_encode_chars.length - 1; i++){
             char c = to_encode_chars[i];
-            int n = (int)c + (int)(key_array[i%key_array.length]); 
-            int dif = 0;
+            int n = (int)c + (int)(key_array[i%key_array.length]);
+
             //ensures wrap around from ASCII values of 32-126
+            /*
             if (n > 126) {
-                dif = n - 126;
-                n = 31 + dif;
+                n = n%126;
+                //if (n <= (126-31)){
+                  //  n += 31;
+                //}
             }
             else if (n < 32) {
-                dif = 32-n;
-                n = 127-dif;
+                n = 127 + (n-32);
             }
+            */
+            while (n > 126) {
+                n -=126;
+            }
+            if (n==126){
+                n = 32;
+            }
+            while (n < 32) {
+                n+=126;
+            }
+            
             encoded += (char)n;
         }
         return encoded;
@@ -100,13 +113,15 @@ class proj1 {
             int dif = 0;
             //ensures wrap around from ASCII values of 32-126
             if (n > 126) {
-                dif = n - 126;
+                dif = n%126;
                 n = 31 + dif;
             }
             else if (n < 32) {
-                dif = 32-n;
+                dif = 32%n;
                 n = 127-dif;
             }
+            
+            
             decoded += (char)n;
         }
         return decoded;
