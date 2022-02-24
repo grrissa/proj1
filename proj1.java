@@ -70,30 +70,21 @@ class proj1 {
         //loops throught the array of chars and changes the value according to the key, then adds to a string
         for (int i=0; i<= to_encode_chars.length - 1; i++){
             char c = to_encode_chars[i];
-            int n = (int)c + (int)(key_array[i%key_array.length]);
+            int key = (int)(key_array[i%key_array.length]);
+            key = key % 126;
+            int n = (int)c + key;
 
             //ensures wrap around from ASCII values of 32-126
-            /*
+            int dif = 0;
             if (n > 126) {
-                n = n%126;
-                //if (n <= (126-31)){
-                  //  n += 31;
-                //}
+                dif = n - 126;
+                n = 31 + dif;
             }
             else if (n < 32) {
-                n = 127 + (n-32);
+                dif = 32-n;
+                n = 127-dif;
             }
-            */
-            while (n > 126) {
-                n -=126;
-            }
-            if (n==126){
-                n = 32;
-            }
-            while (n < 32) {
-                n+=126;
-            }
-            
+
             encoded += (char)n;
         }
         return encoded;
@@ -109,15 +100,17 @@ class proj1 {
         //loops throught the array of chars and changes the value according to the key, then adds to a string
         for (int i=0; i<= to_decode_chars.length - 1; i++){
             char c = to_decode_chars[i];
-            int n = (int)c - (int)(key_array[i%key_array.length]);
+            int key = (int)(key_array[i%key_array.length]);
+            key = key % 126;
+            int n = (int)c - key;
             int dif = 0;
             //ensures wrap around from ASCII values of 32-126
             if (n > 126) {
-                dif = n%126;
+                dif = n-126;
                 n = 31 + dif;
             }
             else if (n < 32) {
-                dif = 32%n;
+                dif = 32-n;
                 n = 127-dif;
             }
             
