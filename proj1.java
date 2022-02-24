@@ -3,7 +3,7 @@ Brief Summary: Program encodes a message inputted by a user using a set of key v
 that the program uses to shift the message along the alphabet. It then displays the 
 encoded message, and then displays the decoded message that the user had originally input.
 Authors: Marissa Esteban and Alizea Hinz
-Last Date Modified: 2/22/2022
+Last Date Modified: 2/23/2022
 *****************************************************************************************/
 
 import java.util.Scanner;
