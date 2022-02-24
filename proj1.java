@@ -28,11 +28,7 @@ class proj1 {
             // calls method to encode the message, and prints it
             String encoded_string = encode(to_encode, keys);
             System.out.println("\nThe encoded message:");
-<<<<<<< HEAD
-            System.out.println("'"+encoded_string+"'");
-=======
             System.out.println(encoded_string);
->>>>>>> 750a5c501b593798fd1df3e2c4c6c488b00d8d32
 
             // passes the encoded string to decode() and decodes the encoded message
             System.out.println("\nThe decoded message:");
@@ -74,23 +70,19 @@ class proj1 {
         //loops throught the array of chars and changes the value according to the key, then adds to a string
         for (int i=0; i<= to_encode_chars.length - 1; i++){
             char c = to_encode_chars[i];
-            //int key = (int)(key_array[i%key_array.length]);
-            //key = (key % 95) + 31;
-            int n ;
+            
             int key = (int)(key_array[i%key_array.length]);
-            n = 31 + (key-(126-(int)c))%126;
+            int n = key + (int)c;
             //ensures wrap around from ASCII values of 32-126
-            /*int dif = 0;
-            if (n > 95) {
-                
-                //dif = n - 95;
-                //n = 31 + dif;
+            
+            if (n > 126) {
+                n = 31 + (key-(126-(int)c))%126;
+       
             }
-            else if (n < 32) {
-                dif = 32-n;
-                n = 127-dif;
+            else if (n <32 ) {
+                n = 127-(key + ((int)c -32))%126;
             }
-            */
+            
             encoded += (char)n;
         }
         return encoded;
@@ -107,18 +99,15 @@ class proj1 {
         for (int i=0; i<= to_decode_chars.length - 1; i++){
             char c = to_decode_chars[i];
             int key = (int)(key_array[i%key_array.length]);
-            key = (key % 95)+31;
+            
             int n = (int)c - key;
-            int dif = 0;
+
             //ensures wrap around from ASCII values of 32-126
-            n = 31 + ((int)(key_array[i%key_array.length])-(126+(int)c))%126;
-            if (n > 95) {
-                dif = n-95;
-                n = 31 + dif;
+            if (n > 126) {
+                n = 31 + (key-(126-(int)c))%126;
             }
             else if (n < 32) {
-                dif = 32-n;
-                n = 95-dif;
+                n = 127-(key - ((int)c -32))%126;
             }
             
             
