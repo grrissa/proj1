@@ -28,7 +28,11 @@ class proj1 {
             // calls method to encode the message, and prints it
             String encoded_string = encode(to_encode, keys);
             System.out.println("\nThe encoded message:");
+<<<<<<< HEAD
             System.out.println("'"+encoded_string+"'");
+=======
+            System.out.println(encoded_string);
+>>>>>>> 750a5c501b593798fd1df3e2c4c6c488b00d8d32
 
             // passes the encoded string to decode() and decodes the encoded message
             System.out.println("\nThe decoded message:");
