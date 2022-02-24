@@ -77,10 +77,11 @@ class proj1 {
             
             if (n > 126) {
                 n = 31 + (key-(126-(int)c))%126;
-       
             }
-            else if (n <32 ) {
-                n = 127-(key + ((int)c -32))%126;
+            else if (n < 32 ) {
+                //n = 127 -(-1*(key-((int)c-32)%-126));
+                n = 95-((32-n)%126);
+                //n = 127-(-1*(key + ((int)c -32))-(key+((int)c -32))%126);
             }
             
             encoded += (char)n;
@@ -101,13 +102,16 @@ class proj1 {
             int key = (int)(key_array[i%key_array.length]);
             
             int n = (int)c - key;
-
+            int dif = 0;
             //ensures wrap around from ASCII values of 32-126
             if (n > 126) {
                 n = 31 + (key-(126-(int)c))%126;
             }
             else if (n < 32) {
-                n = 127-(key - ((int)c -32))%126;
+                n = 127-((32-n)%126);
+ 
+                //n = 127-((32-n));
+                //n = 127-(-1*(key + ((int)c -32))-(key+((int)c -32))%126);
             }
             
             
