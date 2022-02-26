@@ -4,6 +4,8 @@ Authors: Marissa Esteban and Alizea Hinz
 Last Date Modified: 
 *************************************************************************************/
 
+//ASK ABOUT AVERAGE AND WHETHER IT IS ALL NUMBER IN THE FILE OR JUST THE ONES WE ARE PRINTING
+
 import java.util.Scanner;
 import java.io.*; 
 
