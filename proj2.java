@@ -38,12 +38,10 @@ public class proj2 {
                     if (count == 1) { //first time through the loop, initialize past_val
                         past_val = num;
                         output.println(num);
-                        System.out.println(num);
                     }
                     else if (past_val < num) { // only print if the next number is bigger, and update past_val
                         output.println(num);
                         past_val = num;
-                        System.out.println(num);
                     }
                 }
                 if (count != 0) {
