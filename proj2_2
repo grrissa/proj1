@@ -19,7 +19,7 @@ public class proj2 {
             String inputLine;
 
             try {
-                // asks user to input a file to read
+                // asks user to input file to read
                 Scanner in = new Scanner(System.in);
                 System.out.println("\nPlease enter the name of an ASCII file that contains a sorted list of integer numbers, one per line:");
                 String input_file = in.nextLine();
