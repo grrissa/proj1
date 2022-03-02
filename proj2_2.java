@@ -1,5 +1,5 @@
 /*************************************************************************************
-Brief Summary: Programthat reads an ASCII file that contains a set of   numbers of type int 
+Brief Summary: Programthat reads an ASCII file that contains a set of numbers of type int 
 and outputs all the numbers to another file, but without any duplicated numbers
 Authors: Marissa Esteban and Alizea Hinz
 Last Date Modified: 2/27/2022
@@ -8,7 +8,7 @@ Last Date Modified: 2/27/2022
 import java.util.Scanner;
 import java.io.*; 
 
-public class proj2 {
+public class proj2_2 {
     static char repeat_again = 'n';
     public static void main (String[] args){
         
