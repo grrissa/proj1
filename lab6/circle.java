@@ -29,7 +29,8 @@ public class Circle extends Shape {
     public void readShapeData() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the radius of the Circle");
-        radius = in.nextDouble();     
+        radius = in.nextDouble();   
+        in.close();
     }
 
     public String toString() {
