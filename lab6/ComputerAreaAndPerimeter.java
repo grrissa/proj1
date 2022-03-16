@@ -21,13 +21,18 @@ public class ComputerAreaAndPerimeter {
     public static Shape getShape() {
         Scanner in = new Scanner(System.in);
         String type;
-        do {
+        boolean valid = false;
+        //sdo {
             System.out.println("Enter C for circle");
             System.out.println("Enter R for rectangle");
             System.out.println("Enter T for triangle");
             type = in.next();
-        } while (type.contains("crtCRT"));
-
+            type.toLowerCase();
+         //   if ((type == "c")||(type == "r")||(type == "t")) {
+         //       valid = true;
+        //    }
+       // } while (valid == false);
+        in.close();
         if (type.equalsIgnoreCase("c")) {
             return new Circle();
         }
@@ -40,6 +45,7 @@ public class ComputerAreaAndPerimeter {
         else {
             return null;
         }
+        
     }
     private static void displayResult(Shape myShape, double area, double perim){
         System.out.println(myShape);
@@ -57,5 +63,6 @@ public class ComputerAreaAndPerimeter {
             System.out.println("\nInvalid response: \nDo you want to run the program again (y for yes and n for no)?");
             repeat_again = again.next().charAt(0);
         }
+        again.close();
     }
 }
