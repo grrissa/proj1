@@ -33,6 +33,6 @@ public class Circle extends Shape {
     }
 
     public String toString() {
-        return super.toString() + ": width is" + width + ", height is " + height;
+        return super.toString() + ": radius is" + radius;
     }
 }
