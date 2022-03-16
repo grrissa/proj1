@@ -22,7 +22,8 @@ public class ComputerAreaAndPerimeter {
         Scanner in = new Scanner(System.in);
         String type;
         boolean valid = false;
-        //sdo {
+        
+        //do {
             System.out.println("Enter C for circle");
             System.out.println("Enter R for rectangle");
             System.out.println("Enter T for triangle");
