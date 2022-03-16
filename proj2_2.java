@@ -30,7 +30,7 @@ public class proj2_2 {
                 PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
                 // loop that reads the infile line by line and prints it to the output file 
-                int sum = 0;
+                double sum = 0.0;
                 int count = 0;
                 int past_val = 0;
                 while ((inputLine = input.readLine()) != null) {
@@ -53,7 +53,8 @@ public class proj2_2 {
                 }
                 if (count != 0) {
                     double average = sum/count;
-                    output.println(average);
+                    String rounded_average = String.format("%.2f", average);
+                    output.println(rounded_average);
                 }
                 input.close();
                 output.close();
