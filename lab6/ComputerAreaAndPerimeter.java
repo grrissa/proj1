@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ComputerAreaAndPerimeter {
     static char repeat_again = 'n';
-    public static void main() {
+    public static void main(String[] args) {
         do {
             Shape myShape;
             double perimeter;

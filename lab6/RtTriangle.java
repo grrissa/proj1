@@ -6,7 +6,7 @@ public class RtTriangle extends Shape {
     private double width = 0;
     private double height = 0;
 
-    public Recrangle() {
+    public RtTriangle() {
         super("RtTriangle");
     }
 

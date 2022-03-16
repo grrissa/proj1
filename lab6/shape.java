@@ -1,14 +1,20 @@
 package lab6;
 
-public abstract class shape {
+public abstract class Shape {
     private String shapeName = "";
 
-    public shape(String name) {
+    public Shape(String name) {
         shapeName = name;
     }
     public String getShapeName() {
-        return shapeName;}
-    public String toString() {
-        return "Shape is a " +shapeName;
+        return shapeName;
     }
+    public String toString() {
+        return "Shape is a " + shapeName;
+    }
+
+    //abstract methods
+    public abstract double computeArea();
+    public abstract double computePerimeter();
+    public abstract void readShapeData();
 }

@@ -2,14 +2,14 @@ package lab6;
 import java.util.Scanner;
 import java.lang.Math;
 
-public class circle extends Shape {
+public class Circle extends Shape {
     private double radius = 0;
 
-    public Cicle() {
-        super("Rectangle");
+    public Circle() {
+        super("Circle");
     }
 
-    public circle(double r) {
+    public Circle(double r) {
         super("Circle");
         radius = r;
     }
