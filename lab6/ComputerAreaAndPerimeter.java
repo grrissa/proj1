@@ -21,12 +21,12 @@ public class ComputerAreaAndPerimeter {
     public static Shape getShape() {
         Scanner in = new Scanner(System.in);
         String type;
-        //do {
+        do {
             System.out.println("Enter C for circle");
             System.out.println("Enter R for rectangle");
             System.out.println("Enter T for triangle");
             type = in.next();
-        //} while (!(type.toLowerCase().contains("crt")));
+        } while (type.contains("crtCRT"));
 
         if (type.equalsIgnoreCase("c")) {
             return new Circle();
