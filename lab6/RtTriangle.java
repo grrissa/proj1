@@ -29,7 +29,7 @@ public class RtTriangle extends Shape {
     }
 
     public double computePerimeter() {
-        return (height + width) + Math.sqrt((height**2 + width**2));
+        return (height + width) + Math.sqrt((height*height + width*width));
     }
 
     public void readShapeData() {
