@@ -33,7 +33,7 @@ public class ComputerAreaAndPerimeter {
          //       valid = true;
         //    }
        // } while (valid == false);
-        in.close();
+        //in.close();
         if (type.equalsIgnoreCase("c")) {
             return new Circle();
         }
@@ -64,6 +64,5 @@ public class ComputerAreaAndPerimeter {
             System.out.println("\nInvalid response: \nDo you want to run the program again (y for yes and n for no)?");
             repeat_again = again.next().charAt(0);
         }
-        again.close();
     }
 }
