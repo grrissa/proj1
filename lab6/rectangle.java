@@ -1,6 +1,6 @@
 package lab6;
 import java.util.Scanner;
-import java.lang.Math;
+
 
 public class Rectangle extends Shape {
     private double width = 0;
@@ -33,11 +33,12 @@ public class Rectangle extends Shape {
     }
 
     public void readShapeData() {
-        Scanner in = new Scanner(System.in);
+        Scanner inRect = new Scanner(System.in);
         System.out.println("Enter the width of the Rectangle");
-        width = in.nextDouble();
+        width = inRect.nextDouble();
         System.out.println("Enter the height of the Rectangle");
-        height = in.nextDouble();        
+        height = inRect.nextDouble();      
+        inRect.close();  
     }
 
     public String toString() {

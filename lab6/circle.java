@@ -27,12 +27,12 @@ public class Circle extends Shape {
     }
 
     public void readShapeData() {
-        Scanner in = new Scanner(System.in);
+        Scanner inCir = new Scanner(System.in);
         System.out.println("Enter the radius of the Circle");
-        if (!(in.hasNextDouble())) {
-            radius = in.nextDouble();   
-        }
-        in.close();
+        
+        radius = inCir.nextDouble();   
+
+        inCir.close();
     }
 
     public String toString() {

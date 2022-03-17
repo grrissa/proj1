@@ -33,11 +33,12 @@ public class RtTriangle extends Shape {
     }
 
     public void readShapeData() {
-        Scanner in = new Scanner(System.in);
+        Scanner inTri = new Scanner(System.in);
         System.out.println("Enter the width of the Triangle");
-        width = in.nextDouble();
+        width = inTri.nextDouble();
         System.out.println("Enter the height of the Triangle");
-        height = in.nextDouble();        
+        height = inTri.nextDouble();  
+        inTri.close();      
     }
 
     public String toString() {

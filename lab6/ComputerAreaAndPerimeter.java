@@ -21,14 +21,14 @@ public class ComputerAreaAndPerimeter {
     public static Shape getShape() {
         Scanner in = new Scanner(System.in);
         String type;
-        boolean valid = false;
+        //boolean valid = false;
         
         //do {
-            System.out.println("Enter C for circle");
-            System.out.println("Enter R for rectangle");
-            System.out.println("Enter T for triangle");
-            type = in.next();
-            type.toLowerCase();
+        System.out.println("Enter C for circle");
+        System.out.println("Enter R for rectangle");
+        System.out.println("Enter T for triangle");
+        type = in.next();
+        type.toLowerCase();
          //   if ((type == "c")||(type == "r")||(type == "t")) {
          //       valid = true;
         //    }
