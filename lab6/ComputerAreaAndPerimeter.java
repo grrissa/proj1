@@ -2,7 +2,7 @@ package lab6;
 import java.util.Scanner;
 
 public class ComputerAreaAndPerimeter {
-    static char repeat_again = 'n';
+    static String repeat_again = "n";
     public static void main(String[] args) {
         do {
             Shape myShape;
@@ -13,8 +13,21 @@ public class ComputerAreaAndPerimeter {
             perimeter = myShape.computePerimeter(); // Compute perimeter 
             area = myShape.computeArea(); // Compute the area 
             displayResult(myShape, area, perimeter); // Display the result
-            repeat_validation();
-        } while ((repeat_again!='n') && (repeat_again!='N'));
+            
+            Scanner again = new Scanner(System.in);
+            System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
+            
+            repeat_again = again.next();
+            repeat_again.toLowerCase(); 
+            
+            //ensures user inputs a valid character
+            while ((repeat_again!="y") && (repeat_again!="n") ) {
+                System.out.println("\nInvalid response: \nDo you want to run the program again (y for yes and n for no)?");
+                repeat_again = again.next();
+                repeat_again.toLowerCase();
+                }
+            
+        } while (repeat_again!="n");
     
         System.exit(0); 
     }
@@ -55,14 +68,6 @@ public class ComputerAreaAndPerimeter {
     }
     public static void repeat_validation() {
         //asks the user whether they would like to run the program again
-        Scanner again = new Scanner(System.in);
-        System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
-        repeat_again = again.next().charAt(0);
 
-        //ensures user inputs a valid character
-        while ((repeat_again!='y') && (repeat_again!='n') && (repeat_again!='Y') && (repeat_again!='N') ) {
-            System.out.println("\nInvalid response: \nDo you want to run the program again (y for yes and n for no)?");
-            repeat_again = again.next().charAt(0);
-        }
     }
 }
