@@ -32,7 +32,6 @@ public class Circle extends Shape {
         
         radius = inCir.nextDouble();   
 
-        inCir.close();
     }
 
     public String toString() {

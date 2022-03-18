@@ -1,7 +1,6 @@
 package lab6;
 import java.util.Scanner;
 
-
 public class Rectangle extends Shape {
     private double width = 0;
     private double height = 0;
@@ -37,8 +36,7 @@ public class Rectangle extends Shape {
         System.out.println("Enter the width of the Rectangle");
         width = inRect.nextDouble();
         System.out.println("Enter the height of the Rectangle");
-        height = inRect.nextDouble();      
-        inRect.close();  
+        height = inRect.nextDouble();       
     }
 
     public String toString() {

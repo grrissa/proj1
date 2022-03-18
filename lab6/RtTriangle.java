@@ -37,8 +37,7 @@ public class RtTriangle extends Shape {
         System.out.println("Enter the width of the Triangle");
         width = inTri.nextDouble();
         System.out.println("Enter the height of the Triangle");
-        height = inTri.nextDouble();  
-        inTri.close();      
+        height = inTri.nextDouble();      
     }
 
     public String toString() {
