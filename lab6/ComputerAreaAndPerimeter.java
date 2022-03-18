@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class ComputerAreaAndPerimeter {
     public static void main(String[] args) {
-        String repeat_again;
+        char repeat_again = 'n';
         do {
             Shape myShape;
             double perimeter;
@@ -14,20 +14,18 @@ class ComputerAreaAndPerimeter {
             area = myShape.computeArea(); // Compute the area 
             displayResult(myShape, area, perimeter); // Display the result
             
+            //asks the user whether they would like to run the program again
             Scanner again = new Scanner(System.in);
             System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
-            
-            repeat_again = again.next();
-            repeat_again.toLowerCase(); 
-            
+            repeat_again = again.next().charAt(0);
+
             //ensures user inputs a valid character
-            while ((repeat_again!="y") && (repeat_again!="n") ) {
+            while ((repeat_again!='y') && (repeat_again!='n') && (repeat_again!='Y') && (repeat_again!='N') ) {
                 System.out.println("\nInvalid response: \nDo you want to run the program again (y for yes and n for no)?");
-                repeat_again = again.next();
-                repeat_again.toLowerCase();
-                }
+                repeat_again = again.next().charAt(0);
+            }
             
-        } while (repeat_again!="n");
+        } while ((repeat_again!='n') && (repeat_again!='N'));
     
         System.exit(0); 
     }
