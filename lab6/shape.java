@@ -1,15 +1,30 @@
+/*****************************************************************************************
+Brief Summary: Program that defines a shape object and creates abstract methods to
+compute the shape object's area and perimeter.
+Authors: Marissa Esteban and Alizea Hinz
+Last Date Modified: 2/23/2022
+*****************************************************************************************/
 package lab6;
 
 public abstract class Shape {
     private String shapeName = "";
 
     public Shape(String name) {
+    /* 
+        Constructs a shape obejct
+    */
         shapeName = name;
     }
     public String getShapeName() {
+    /* 
+        Method that returns the shape name
+    */
         return shapeName;
     }
     public String toString() {
+    /* 
+        Method that returns a string of the shape name
+    */
         return "Shape is a " + shapeName;
     }
 
