@@ -1,9 +1,9 @@
 package lab6;
 import java.util.Scanner;
 
-public class ComputerAreaAndPerimeter {
-    static String repeat_again = "n";
+class ComputerAreaAndPerimeter {
     public static void main(String[] args) {
+        String repeat_again;
         do {
             Shape myShape;
             double perimeter;
