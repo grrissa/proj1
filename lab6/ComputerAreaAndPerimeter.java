@@ -1,10 +1,12 @@
 package lab6;
 import java.util.Scanner;
 
+
 class ComputerAreaAndPerimeter {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         char repeat_again = 'n';
         do {
+            
             Shape myShape;
             double perimeter;
             double area;
@@ -15,36 +17,25 @@ class ComputerAreaAndPerimeter {
             displayResult(myShape, area, perimeter); // Display the result
             
             //asks the user whether they would like to run the program again
-            Scanner again = new Scanner(System.in);
             System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
+            Scanner again = new Scanner(System.in);
             repeat_again = again.next().charAt(0);
 
-            //ensures user inputs a valid character
-            while ((repeat_again!='y') && (repeat_again!='n') && (repeat_again!='Y') && (repeat_again!='N') ) {
-                System.out.println("\nInvalid response: \nDo you want to run the program again (y for yes and n for no)?");
-                repeat_again = again.next().charAt(0);
-            }
-            
         } while ((repeat_again!='n') && (repeat_again!='N'));
     
         System.exit(0); 
     }
+
     public static Shape getShape() {
         Scanner in = new Scanner(System.in);
         String type;
-        //boolean valid = false;
-        
-        //do {
+
         System.out.println("Enter C for circle");
         System.out.println("Enter R for rectangle");
         System.out.println("Enter T for triangle");
         type = in.next();
         type.toLowerCase();
-         //   if ((type == "c")||(type == "r")||(type == "t")) {
-         //       valid = true;
-        //    }
-       // } while (valid == false);
-        //in.close();
+
         if (type.equalsIgnoreCase("c")) {
             return new Circle();
         }
@@ -57,15 +48,10 @@ class ComputerAreaAndPerimeter {
         else {
             return null;
         }
-        
     }
     private static void displayResult(Shape myShape, double area, double perim){
         System.out.println(myShape);
         System.out.printf("The area is %.2f%nThe perimeter is %.2f%n",
         area, perim);
-    }
-    public static void repeat_validation() {
-        //asks the user whether they would like to run the program again
-
     }
 }
