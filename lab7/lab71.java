@@ -9,6 +9,10 @@ class lab71 {
         System.out.println("Enter the number of the fibonacci number you want: ");
         int num = input.nextInt();
 
+        int result = recur(num);
+        System.out.println("fib = " + result);
+    }
+    public static int recur(int num){
         int last_one = 1;
         int last_two = 0;
 
@@ -17,8 +21,7 @@ class lab71 {
             temp = last_two;
             last_two = last_one;
             last_one = last_one + temp;
-            
         }
-        System.out.println("fib = " + last_one);
+        return last_one;
     }
 }
