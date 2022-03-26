@@ -20,9 +20,10 @@ public class proj3_run {
                 // asks user to input file to read
                 Scanner in = new Scanner(System.in);
                 System.out.println("\nPlease enter the name of a file that contains a list of integer numbers, separated by commas on one line:");
-                String input_file = in.nextLine();
+                //String input_file = in.nextLine();
+                String input_file = "file3.out";
                 input = new BufferedReader(new FileReader(input_file));
-
+                
                 // creates a new file for the program to output
                 Scanner p = new Scanner(System.in);
                 System.out.println("\nPlease enter the number for which Maximum Subsequence Sum program you would like to run:");

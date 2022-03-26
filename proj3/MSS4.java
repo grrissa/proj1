@@ -11,8 +11,16 @@ public class MSS4 {
         System.out.println("Maximum Sum = " + result);
     }
     public static int sum(int[] num){
-        int maxSum = 0;
-
+        int maxSum = 0, sum = 0;
+        for(int i = 0; i<num.length; i++){
+            sum += num[i];
+            if (sum>maxSum){
+                maxSum = sum;
+            }
+            else {
+                if (sum<0) sum = 0;
+            }
+        }
         return maxSum;
     }
     public static int[] convert_array(String nums_str) {

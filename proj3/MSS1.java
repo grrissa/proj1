@@ -12,7 +12,15 @@ public class MSS1 {
     }
     public static int sum(int[] num){
         int maxSum = 0;
-
+        for (int i = 0; i<num.length; i++) {
+            for (int j = i; j<=(num.length); j++) {
+                int sum = 0;
+                for (int k = i; k<j;k++) {
+                    sum += num[k];
+                }
+                if (sum>maxSum) maxSum = sum;
+            }
+        }
         return maxSum;
     }
     public static int[] convert_array(String nums_str) {

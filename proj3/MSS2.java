@@ -1,6 +1,5 @@
 package proj3;
 import java.util.Scanner;
-import java.io.*; 
 
 public class MSS2 {
     public static void main(String[] args) {
@@ -13,7 +12,7 @@ public class MSS2 {
     }
     public static int sum(int[] num){
         int maxSum = 0;
-        for (int i = 0; i<num.length-1; i++) {
+        for (int i = 0; i<num.length; i++) {
             int sum = 0;
             for (int j = i; j<(num.length); j++) {
                 sum += num[j];
