@@ -35,9 +35,14 @@ public class proj3_run {
                     System.out.println("\n1) MSS1\n2) MSS2\n3) MSS3\n4) MSS4\n5) All 4 programs in a sequence");
                     program = p.nextInt();
                 }
+                String[] str_nums;
                 // loop that reads the infile line by line and prints it to the output file 
-                if ((inputLine = input.readLine()) != null) inputLine = input.readLine();
-                String[] str_nums = inputLine.split(",");
+                if ((inputLine = input.readLine()) != null) inputLine = input.readLine(); {
+                    str_nums = inputLine.split(",");}
+
+                else {
+                    System.out.println("File is empty");
+                }
                 int[] nums = new int[str_nums.length];
 
                 for(int i = 0;i < str_nums.length;i++) {
