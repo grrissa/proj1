@@ -7,14 +7,26 @@ public class MSS3 {
         System.out.println("Enter numbers separated by commas: ");
         String num = input.nextLine();
         int[] nums_ints = convert_array(num);
-        int result = sum(nums_ints);
+        int result = sum(nums_ints, 0, nums_ints.length-1);
         System.out.println("Maximum Sum = " + result);
     }
-    public static int sum(int[] num){
-        int maxSum = 0;
-        //Add method
-        return maxSum;
+    public static int sum(int[] num, low, high){
+        if high < low 
+            return num[high];
+        else {
+            int mid = (high - low)/ 2;
+            int left_side_max = sum(num, low, mid);
+            int right_side_max = sum(num, mid+1, high);
+            int mid_sum_max = mid_sum(num, low, mid, high);
+
+        }
+        return max(left_side_max, right_side_max, mid_sum_max);
     }
+    public static int mid_sum(int[] num, low, mid, high) {
+        //blah
+    }
+
+
     public static int[] convert_array(String nums_str) {
         String[] nums_array = nums_str.split(",");
         int[] nums = new int[nums_array.length];
