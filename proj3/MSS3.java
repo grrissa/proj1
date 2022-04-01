@@ -27,8 +27,8 @@ public class MSS3 {
         for (int i = mid; i>low; i--) {
             int sum = 0;
             for (int j = i; j<mid-low; j--) {
-                sum += num[j];
-                if (sum>maxSum) maxSum = sum;
+                maxSumLeft += num[j];
+                if (sum>maxSumLeft) maxSumLeft = sum;
             }
         }
 
@@ -37,7 +37,7 @@ public class MSS3 {
             int sum = 0;
             for (int j = i; j<high; j++) {
                 sum += num[j];
-                if (sum>maxSum) maxSum = sum;
+                if (sum>maxSumRight) maxSumRight = sum;
             }
         }
         return maxSumLeft + maxSumRight;
