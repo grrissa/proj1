@@ -23,7 +23,24 @@ public class MSS3 {
         return max(left_side_max, right_side_max, mid_sum_max);
     }
     public static int mid_sum(int[] num, low, mid, high) {
-        //blah
+        int maxSumLeft = 0;
+        for (int i = mid; i>low; i--) {
+            int sum = 0;
+            for (int j = i; j<mid-low; j--) {
+                sum += num[j];
+                if (sum>maxSum) maxSum = sum;
+            }
+        }
+
+        int maxSumRight = 0;
+        for (int i = mid+1; i<high+1; i++) {
+            int sum = 0;
+            for (int j = i; j<high; j++) {
+                sum += num[j];
+                if (sum>maxSum) maxSum = sum;
+            }
+        }
+        return maxSumLeft + maxSumRight;
     }
 
 
