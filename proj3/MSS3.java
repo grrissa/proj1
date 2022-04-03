@@ -24,9 +24,9 @@ public class MSS3 {
     }
     public static int mid_sum(int[] num, low, mid, high) {
         int maxSumLeft = 0;
-        for (int i = mid; i>low; i--) {
+        for (int i = mid; i>=low; i--) {
             int sum = 0;
-            for (int j = i; j<mid-low; j--) {
+            for (int j = i; j>=low; j--) {
                 maxSumLeft += num[j];
                 if (sum>maxSumLeft) maxSumLeft = sum;
             }
