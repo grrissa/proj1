@@ -10,19 +10,19 @@ public class MSS3 {
         int result = sum(nums_ints, 0, nums_ints.length-1);
         System.out.println("Maximum Sum = " + result);
     }
-    public static int sum(int[] num, low, high){
-        if high < low 
+    public static int sum(int[] num, int low, int high){
+        if (high < low)
             return num[high];
-        else {
-            int mid = (high - low)/ 2;
-            int left_side_max = sum(num, low, mid);
-            int right_side_max = sum(num, mid+1, high);
-            int mid_sum_max = mid_sum(num, low, mid, high);
+        
+        int mid = (high - low)/ 2;
+        int left_side_max = sum(num, low, mid);
+        int right_side_max = sum(num, mid+1, high);
+        int mid_sum_max = mid_sum(num, low, mid, high);
 
-        }
+        
         return max(left_side_max, right_side_max, mid_sum_max);
     }
-    public static int mid_sum(int[] num, low, mid, high) {
+    public static int mid_sum(int[] num, int low, int mid, int high) {
         int maxSumLeft = 0;
         for (int i = mid; i>low; i--) {
             int sum = 0;

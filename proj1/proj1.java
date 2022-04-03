@@ -1,3 +1,4 @@
+package proj1;
 /*****************************************************************************************
 Brief Summary: Program encodes a message inputted by a user using a set of key values
 that the program uses to shift the message along the alphabet. It then displays the 
