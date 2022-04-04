@@ -20,12 +20,11 @@ public class MSS3 {
         if (high <= low)
             return num[high];
 
-        else {
-            int mid = (high - low)/ 2;
-            int left_side_max = sum(num, low, mid);
-            int right_side_max = sum(num, mid+1, high);
-            int mid_sum_max = mid_sum(num, low, mid, high);
-        }
+        int mid = (high - low)/ 2;
+        int left_side_max = sum(num, low, mid);
+        int right_side_max = sum(num, mid+1, high);
+        int mid_sum_max = mid_sum(num, low, mid, high);
+        
                 
         return Math.max(Math.max(left_side_max, right_side_max), mid_sum_max);
     }
