@@ -1,4 +1,10 @@
 package proj3;
+/*************************************************************************************
+Brief Summary: Program that will find the MSS by iterating through the sequence and simultaneously 
+calculating the sum of each number.  Will update max sum accordingly and return the max subarray.
+Authors: Marissa Esteban and Alizea Hinz
+Last Date Modified: 
+*************************************************************************************/
 import java.util.Scanner;
 
 public class MSS4 {

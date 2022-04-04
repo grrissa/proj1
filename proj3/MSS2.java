@@ -1,4 +1,10 @@
 package proj3;
+/*************************************************************************************
+Brief Summary: Program that will iterate through the sequence of numbers and calculate the
+max sum using two loops.
+Authors: Marissa Esteban and Alizea Hinz
+Last Date Modified: 
+*************************************************************************************/
 import java.util.Scanner;
 
 public class MSS2 {

@@ -1,4 +1,10 @@
 package proj3;
+/*************************************************************************************
+Brief Summary: Program that uses a brute force method of finding the max sub array
+sum of a sequence. Uses three loops.
+Authors: Marissa Esteban and Alizea Hinz
+Last Date Modified: 
+*************************************************************************************/
 import java.util.Scanner;
 
 public class MSS1 {

@@ -1,4 +1,10 @@
 package proj3;
+/*************************************************************************************
+Brief Summary: Program that will recursively find the MSS of the sequence by findinging the max left subarray, 
+max right subarray, and then the max mid subarray and then comparing the three.
+Authors: Marissa Esteban and Alizea Hinz
+Last Date Modified: 
+*************************************************************************************/
 import java.util.Scanner;
 
 public class MSS3 {
