@@ -61,15 +61,12 @@ public class MSS3 {
         int[] nums = new int[nums_array.length];
 
         for(int i = 0;i < nums_array.length;i++) {
-            try
-            {
+            try {
                 nums[i] = Integer.parseInt(nums_array[i]);
             }
-            catch (NumberFormatException nfe)
-            {
+            catch (NumberFormatException nfe){
                 System.out.println(nfe.getMessage());
                 System.exit(1);
-                //Do nothing or you could print error if you want
             }
         }
         return nums;

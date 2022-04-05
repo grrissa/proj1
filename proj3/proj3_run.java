@@ -4,7 +4,7 @@ Brief Summary: Program that will ask the user to input a file with a sequence of
 select between four algorithms to run on the file.  Will display the running time of the four algorithms for 
 user to compare.
 Authors: Marissa Esteban and Alizea Hinz
-Last Date Modified: 4/5/2022x
+Last Date Modified: 4/5/2022
 *************************************************************************************/
 
 import java.util.Scanner;
@@ -56,12 +56,11 @@ public class proj3_run {
                     catch (NumberFormatException nfe) {
                         System.out.println(nfe.getMessage());
                         System.exit(1);
-                        //Do nothing or you could print error if you want
                     }
                 }
                 
                 input.close();
-                if (program ==5) {
+                if (program == 5) {
                     System.out.println("Execution Time for MSS1 in seconds: " + run_program(1, nums));
                     System.out.println("Execution Time for MSS2 in seconds: " + run_program(2, nums));
                     System.out.println("Execution Time for MSS3 in seconds: " + run_program(3, nums));
@@ -84,7 +83,6 @@ public class proj3_run {
                 System.out.println(e.getMessage());
                 System.exit(1);
             }
-
             repeat_validation();
         
         } while ((repeat_again!='n') && (repeat_again!='N'));
@@ -104,9 +102,7 @@ public class proj3_run {
         else if (program ==4) {
             start_time = System.nanoTime();
             int max_sum = MSS4.sum(nums);}        
-        System.out.println(System.nanoTime());
         float end_time = System.nanoTime() - start_time;
-        System.out.println(end_time);
         return (float) (end_time/1000000000.0);
     }
 
