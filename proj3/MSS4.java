@@ -46,7 +46,6 @@ public class MSS4 {
             catch (NumberFormatException nfe){
                 System.out.println(nfe.getMessage());
                 System.exit(1);
-                //Do nothing or you could print error if you want
             }
         }
         return nums;
