@@ -3,7 +3,7 @@ package proj3;
 Brief Summary: Program that uses a brute force method of finding the max sub array
 sum of a sequence. Uses three loops.
 Authors: Marissa Esteban and Alizea Hinz
-Last Date Modified: 
+Last Date Modified: 4/5/2022
 *************************************************************************************/
 import java.util.Scanner;
 
@@ -30,6 +30,9 @@ public class MSS1 {
         return maxSum;
     }
     public static int[] convert_array(String nums_str) {
+    /* 
+        Method that converts a String of numbers separated by commas into an int array
+    */
         String[] nums_array = nums_str.split(",");
         int[] nums = new int[nums_array.length];
 

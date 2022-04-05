@@ -4,7 +4,7 @@ Brief Summary: Program that will ask the user to input a file with a sequence of
 select between four algorithms to run on the file.  Will display the running time of the four algorithms for 
 user to compare.
 Authors: Marissa Esteban and Alizea Hinz
-Last Date Modified: 
+Last Date Modified: 4/5/2022x
 *************************************************************************************/
 
 import java.util.Scanner;

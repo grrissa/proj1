@@ -3,7 +3,7 @@ package proj3;
 Brief Summary: Program that will find the MSS by iterating through the sequence and simultaneously 
 calculating the sum of each number.  Will update max sum accordingly and return the max subarray.
 Authors: Marissa Esteban and Alizea Hinz
-Last Date Modified: 
+Last Date Modified: 4/5/2022
 *************************************************************************************/
 import java.util.Scanner;
 
@@ -30,6 +30,9 @@ public class MSS4 {
         return maxSum;
     }
     public static int[] convert_array(String nums_str) {
+    /* 
+        Method that converts a String of numbers separated by commas into an int array
+    */
         String[] nums_array = nums_str.split(",");
         int[] nums = new int[nums_array.length];
 

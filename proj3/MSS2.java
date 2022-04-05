@@ -1,9 +1,9 @@
 package proj3;
 /*************************************************************************************
-Brief Summary: Program that will iterate through the sequence of numbers and calculate the
-max sum using two loops.
+Brief Summary: Program that will iterate through the sequence of numbers and calculate 
+the max sum using two loops.
 Authors: Marissa Esteban and Alizea Hinz
-Last Date Modified: 
+Last Date Modified: 4/5/2022
 *************************************************************************************/
 import java.util.Scanner;
 
@@ -28,6 +28,9 @@ public class MSS2 {
         return maxSum;
     }
     public static int[] convert_array(String nums_str) {
+    /* 
+        Method that converts a String of numbers separated by commas into an int array
+    */
         String[] nums_array = nums_str.split(",");
         int[] nums = new int[nums_array.length];
 
