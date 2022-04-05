@@ -1,7 +1,8 @@
 package proj3;
 /*************************************************************************************
-Brief Summary: Program that will recursively find the MSS of the sequence by findinging the max left subarray, 
-max right subarray, and then the max mid subarray and then comparing the three.
+Brief Summary: Program that will recursively find the MSS of the sequence by finding
+the max left subarray, max right subarray, and then the max mid subarray and then 
+comparing the three.
 Authors: Marissa Esteban and Alizea Hinz
 Last Date Modified: 4/5/2022
 *************************************************************************************/
