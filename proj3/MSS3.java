@@ -17,7 +17,7 @@ public class MSS3 {
         System.out.println("Maximum Sum = " + result);
     }
     public static int sum(int[] num, int low, int high){
-        if (high <= low)
+        if (high == low)
             return num[high];
 
         else {
@@ -53,7 +53,7 @@ public class MSS3 {
                 if (sum<0) sum = 0;
             }
         }
-        return maxSumLeft + maxSumRight;
+        return Math.max(Math.max(maxSumLeft + maxSumRight,maxSumLeft),maxSumRight);
     }
 
 
