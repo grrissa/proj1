@@ -89,20 +89,21 @@ public class proj3_run {
     }
     public static float run_program(int program, int[] nums){
         long start_time = 0;
-        System.out.println(System.nanoTime());
+        int max_sum = 0;
         if (program == 1) {
             start_time = System.nanoTime();
-            int max_sum = MSS1.sum(nums);}
+            max_sum = MSS1.sum(nums);}
         else if (program ==2) {
             start_time = System.nanoTime();
-            int max_sum = MSS2.sum(nums);}
+            max_sum = MSS2.sum(nums);}
         else if (program ==3) {
             start_time = System.nanoTime();
-            int max_sum = MSS3.sum(nums, 0, nums.length-1);}
+            max_sum = MSS3.sum(nums, 0, nums.length-1);}
         else if (program ==4) {
             start_time = System.nanoTime();
-            int max_sum = MSS4.sum(nums);}        
+            max_sum = MSS4.sum(nums);}        
         float end_time = System.nanoTime() - start_time;
+        System.out.println(max_sum);
         return (float) (end_time/1000000000.0);
     }
 

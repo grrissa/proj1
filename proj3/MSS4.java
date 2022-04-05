@@ -21,6 +21,7 @@ public class MSS4 {
         Method that loops through an array of ints and will calculate the maximum sum possible
     */
         int maxSum = 0, sum = 0;
+        System.out.println(num.length);
         for(int i = 0; i<num.length; i++){
             sum += num[i];
             if (sum>maxSum){
