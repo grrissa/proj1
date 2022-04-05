@@ -3,7 +3,7 @@ package proj3;
 Brief Summary: Program that will recursively find the MSS of the sequence by findinging the max left subarray, 
 max right subarray, and then the max mid subarray and then comparing the three.
 Authors: Marissa Esteban and Alizea Hinz
-Last Date Modified: 
+Last Date Modified: 4/5/2022
 *************************************************************************************/
 import java.util.Scanner;
 
@@ -18,10 +18,13 @@ public class MSS3 {
     }
     
     public static int sum(int[] nums, int low, int high){
+    /* 
+        Method that recursively calls sum in order to calculate the maximum subsequence sum
+    */
         if (high == low) //Base Case
             return nums[high];
 
-        else{
+        else{ //Recursive case
             int mid = (high + low)/ 2;
 
             return Math.max(Math.max(sum(nums, low, mid), sum(nums, mid+1, high)), mid_sum(nums, low, mid, high));
@@ -29,7 +32,9 @@ public class MSS3 {
     }
 
     public static int mid_sum(int[] num, int low, int mid, int high) {
-
+    /* 
+        Method that caluclates both the max left and right sums and returns the largets value
+    */
         int maxSumLeft = 0, sum = 0;
         for(int i = mid; i>=low; i--){
             sum += num[i];
@@ -38,7 +43,7 @@ public class MSS3 {
         }
 
         int maxSumRight = 0;
-        sum = 0;
+        sum = 0; // resets sum to reuse
         for(int i = mid+1; i<=high; i++){
             sum += num[i];
             if (sum>maxSumRight)
@@ -48,6 +53,9 @@ public class MSS3 {
     }
 
     public static int[] convert_array(String nums_str) {
+    /* 
+        Method that converts a String of numbers separated by commas into an int array
+    */
         String[] nums_array = nums_str.split(",");
         int[] nums = new int[nums_array.length];
 
