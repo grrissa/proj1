@@ -21,7 +21,7 @@ public class MSS3 {
             return num[high];
 
         else {
-            int mid = (high - low)/ 2;
+            int mid = low + ((high - low)/ 2);
             int left_side_max = sum(num, low, mid);
             int right_side_max = sum(num, mid+1, high);
             int mid_sum_max = mid_sum(num, low, mid, high);
@@ -34,16 +34,16 @@ public class MSS3 {
         int maxSumLeft = 0;
         for (int i = mid; i>=low; i--) {
             int sum = 0;
-            for (int j = i; j<mid-low; j--) {
+            for (int j = i; j>=low; j--) {
                 sum += num[j];
                 if (sum>maxSumLeft) maxSumLeft = sum;
             }
         }
 
         int maxSumRight = 0;
-        for (int i = mid+1; i<high+1; i++) {
+        for (int i = mid+1; i<=high; i++) {
             int sum = 0;
-            for (int j = i; j<high; j++) {
+            for (int j = i; j<=high; j++) {
                 sum += num[j];
                 if (sum>maxSumRight) maxSumRight = sum;
             }
