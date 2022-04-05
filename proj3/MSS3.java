@@ -30,16 +30,7 @@ public class MSS3 {
     }
 
     public static int mid_sum(int[] num, int low, int mid, int high) {
-        /*
-        int maxSumLeft = 0;
-        for (int i = mid; i>=low; i--) {
-            int sum = 0;
-            for (int j = i; j>=low; j--) {
-                sum += num[j];
-                if (sum>maxSumLeft) maxSumLeft = sum;
-            }
-        }
-        */
+
         int maxSumLeft = 0, sum = 0;
         for(int i = mid; i>=low; i--){
             sum += num[i];
@@ -50,16 +41,7 @@ public class MSS3 {
                 if (sum<0) sum = 0;
             }
         }
-        /*
-        int maxSumRight = 0;
-        for (int i = mid+1; i<=high; i++) {
-            int sum = 0;
-            for (int j = i; j<=high; j++) {
-                sum += num[j];
-                if (sum>maxSumRight) maxSumRight = sum;
-            }
-        }
-        */
+
         int maxSumRight = 0;
         sum = 0;
         for(int i = mid+1; i<=high; i++){
