@@ -17,13 +17,16 @@ public class MSS4 {
         System.out.println("Maximum Sum = " + result);
     }
     public static int sum(int[] num){
+    /* 
+        Method that loops through an array of ints and will calculate the maximum sum possible
+    */
         int maxSum = 0, sum = 0;
         for(int i = 0; i<num.length; i++){
             sum += num[i];
             if (sum>maxSum){
                 maxSum = sum;
             }
-            else {
+            else { // disregards the sum if it is less than 0, and resets it
                 if (sum<0) sum = 0;
             }
         }
@@ -37,12 +40,10 @@ public class MSS4 {
         int[] nums = new int[nums_array.length];
 
         for(int i = 0;i < nums_array.length;i++) {
-            try
-            {
+            try {
                 nums[i] = Integer.parseInt(nums_array[i]);
             }
-            catch (NumberFormatException nfe)
-            {
+            catch (NumberFormatException nfe){
                 System.out.println(nfe.getMessage());
                 System.exit(1);
                 //Do nothing or you could print error if you want
