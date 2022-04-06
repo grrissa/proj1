@@ -1,7 +1,11 @@
-import java.io.*;
-import java.util.Scanner;
+package proj3;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class fileCreator {
         public static void main(String[]args) {

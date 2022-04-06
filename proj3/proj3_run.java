@@ -61,12 +61,12 @@ public class proj3_run {
                 
                 input.close();
                 if (program == 5) {
-                    System.out.println("Execution Time for MSS1 in seconds: " + run_program(1, nums));
-                    System.out.println("Execution Time for MSS2 in seconds: " + run_program(2, nums));
-                    System.out.println("Execution Time for MSS3 in seconds: " + run_program(3, nums));
-                    System.out.println("Execution Time for MSS4 in seconds: " + run_program(4, nums));}
+                    System.out.println("Execution Time for MSS1 in seconds: " + run_program(1, true, nums));
+                    System.out.println("Execution Time for MSS2 in seconds: " + run_program(2, false, nums));
+                    System.out.println("Execution Time for MSS3 in seconds: " + run_program(3, false, nums));
+                    System.out.println("Execution Time for MSS4 in seconds: " + run_program(4, false, nums));}
                 else {
-                    System.out.println("Execution Time for MSS"+program+" in seconds: " + run_program(program, nums));
+                    System.out.println("Execution Time for MSS"+program+" in seconds: " + run_program(program,true, nums));
                 }    
             } // end try
 
@@ -87,7 +87,7 @@ public class proj3_run {
         
         } while ((repeat_again!='n') && (repeat_again!='N'));
     }
-    public static float run_program(int program, int[] nums){
+    public static float run_program(int program, boolean print, int[] nums){
         long start_time = 0;
         int max_sum = 0;
         if (program == 1) {
@@ -103,7 +103,7 @@ public class proj3_run {
             start_time = System.nanoTime();
             max_sum = MSS4.sum(nums);}        
         float end_time = System.nanoTime() - start_time;
-        System.out.println(max_sum);
+        if (print) System.out.println("The Maximum Subsequence Sum is: " + max_sum);
         return (float) (end_time/1000000000.0);
     }
 
