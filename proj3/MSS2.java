@@ -17,6 +17,9 @@ public class MSS2 {
         System.out.println("Maximum Sum = " + result);
     }
     public static int sum(int[] num){
+    /*
+    Will loop through the array and calculate the sum of subarrays and return the greatest sum
+    */
         int maxSum = 0;
         for (int i = 0; i<num.length; i++) {
             int sum = 0;

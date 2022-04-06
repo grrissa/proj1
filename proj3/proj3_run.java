@@ -88,6 +88,11 @@ public class proj3_run {
         } while ((repeat_again!='n') && (repeat_again!='N'));
     }
     public static float run_program(int program, boolean print, int[] nums){
+        /*
+        Parameters: integer that represents which MSS program to run; int array of numbers
+        Will begin the timer and end it after the program finishes and will calculate the amount of time
+        it took for the program to run. Will return the total time in seconds.
+        */
         long start_time = 0;
         int max_sum = 0;
 
@@ -110,6 +115,9 @@ public class proj3_run {
         return (float) (end_time/1000000000.0);
     }
     public static int pick_method(){
+        /*
+        Asks user what program they would like to run and returns the integer
+        */
         // asks user which program they would like to run
         Scanner p = new Scanner(System.in);
         System.out.println("\nPlease enter the number for which Maximum Subsequence Sum program you would like to run:");
@@ -125,6 +133,9 @@ public class proj3_run {
     }
 
     public static void repeat_validation() {
+        /*
+        Asks user if they would like to run the program again or not
+        */
         //asks the user whether they would like to run the program again
         Scanner again = new Scanner(System.in);
         System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
