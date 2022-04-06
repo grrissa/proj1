@@ -23,57 +23,59 @@ public class proj3_run {
                 Scanner in = new Scanner(System.in);
                 System.out.println("\nPlease enter the name of a file that contains a list of integer numbers, separated by commas on one line:");
                 String input_file = in.nextLine();
-                //String input_file = "file3.out";
                 input = new BufferedReader(new FileReader(input_file));
-                
-                // asks user which program they would like to run
-                Scanner p = new Scanner(System.in);
-                System.out.println("\nPlease enter the number for which Maximum Subsequence Sum program you would like to run:");
-                System.out.println("1) MSS1\n2) MSS2\n3) MSS3\n4) MSS4\n5) All 4 programs in a sequence");
-                int program = p.nextInt();
 
-                while ((program<1) || (program>5) ) {
-                    System.out.println("\nInvalid Response:\nPlease enter the number for which Maximum Subsequence Sum program you would like to run:");
-                    System.out.println("1) MSS1\n2) MSS2\n3) MSS3\n4) MSS4\n5) All 4 programs in a sequence");
-                    program = p.nextInt();
-                }
                 String[] str_nums = null;
                 int length = 0;
-                // loop that reads the infile line by line and prints it to the output file 
+                boolean problems = false; // to see if file is empty or there are entries that are not integers
+                
+                // splits the input into an array of strings if the file is not empty
                 if ((inputLine = input.readLine()) != null) { 
                     str_nums = inputLine.split(",");
                     length = str_nums.length;
                  }
-                else {
+                else { 
                     System.out.println("File is empty");
+                    problems = true;
                 }
+                
+                //converts String array to int array
                 int[] nums = new int[length]; 
-
                 for(int i = 0;i < length;i++) {
                     try {
                         nums[i] = Integer.parseInt(str_nums[i]);
                     }
                     catch (NumberFormatException nfe) {
                         System.out.println(nfe.getMessage());
-                        System.exit(1);
+                        System.out.println("There is an entry in this file that is not an integer. \nPlease fix.");
+                        problems = true;
                     }
                 }
                 
                 input.close();
-                if (program == 5) {
-                    System.out.println("Execution Time for MSS1 in seconds: " + run_program(1, true, nums));
-                    System.out.println("Execution Time for MSS2 in seconds: " + run_program(2, false, nums));
-                    System.out.println("Execution Time for MSS3 in seconds: " + run_program(3, false, nums));
-                    System.out.println("Execution Time for MSS4 in seconds: " + run_program(4, false, nums));}
-                else {
-                    System.out.println("Execution Time for MSS"+program+" in seconds: " + run_program(program,true, nums));
-                }    
+
+                if (!problems) { // will continue on if the file is not empty or if all entries are ints
+
+                    int program = pick_method(); //will let user decide what methods they would like to run
+
+                    if (program == 5) {
+                        System.out.println("Execution Time for MSS1 in seconds: " + run_program(1, true, nums));
+                        System.out.println("Execution Time for MSS2 in seconds: " + run_program(2, false, nums));
+                        System.out.println("Execution Time for MSS3 in seconds: " + run_program(3, false, nums));
+                        System.out.println("Execution Time for MSS4 in seconds: " + run_program(4, false, nums));}
+                    else {
+                        System.out.println("Execution Time for MSS"+program+" in seconds: " + run_program(program,true, nums));
+                    }    
+
+                } // end things skipped if file is empty
+                repeat_validation();
             } // end try
 
             // catching exceptions
             catch (FileNotFoundException e) {
                 System.out.println(e.getMessage());
-                System.exit(1); 
+                repeat_again='y';
+                System.out.println("Invalid File Name. Please try again."); 
             }
             catch (IOException e){
                 System.out.println(e.getMessage());
@@ -83,13 +85,12 @@ public class proj3_run {
                 System.out.println(e.getMessage());
                 System.exit(1);
             }
-            repeat_validation();
-        
         } while ((repeat_again!='n') && (repeat_again!='N'));
     }
     public static float run_program(int program, boolean print, int[] nums){
         long start_time = 0;
         int max_sum = 0;
+
         if (program == 1) {
             start_time = System.nanoTime();
             max_sum = MSS1.sum(nums);}
@@ -103,8 +104,24 @@ public class proj3_run {
             start_time = System.nanoTime();
             max_sum = MSS4.sum(nums);}        
         float end_time = System.nanoTime() - start_time;
-        if (print) System.out.println("The Maximum Subsequence Sum is: " + max_sum);
+
+        if (print) //ensures max sum is only printed once if program 5 is chosen
+            System.out.println("\nThe Maximum Subsequence Sum is: " + max_sum);
         return (float) (end_time/1000000000.0);
+    }
+    public static int pick_method(){
+        // asks user which program they would like to run
+        Scanner p = new Scanner(System.in);
+        System.out.println("\nPlease enter the number for which Maximum Subsequence Sum program you would like to run:");
+        System.out.println("1) MSS1\n2) MSS2\n3) MSS3\n4) MSS4\n5) All 4 programs in a sequence");
+        int program = p.nextInt();
+
+        while ((program<1) || (program>5) ) {
+            System.out.println("\nInvalid Response:\nPlease enter the number for which Maximum Subsequence Sum program you would like to run:");
+            System.out.println("1) MSS1\n2) MSS2\n3) MSS3\n4) MSS4\n5) All 4 programs in a sequence");
+            program = p.nextInt();
+        }
+        return program;
     }
 
     public static void repeat_validation() {
