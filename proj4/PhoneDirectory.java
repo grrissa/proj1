@@ -44,7 +44,6 @@ public class PhoneDirectory {
     */
         boolean is_there = false;
         int index = 0;
-        String old = "";
         DirectoryEntry found = null;
         while (is_there == false) {
             if (theDirectory.get(index).name == name) {
@@ -65,13 +64,33 @@ public class PhoneDirectory {
     Will remove the entry referenced by name and return the entry
     removed of null if there is no entry for that name
     */
-    
+        boolean is_there = false;
+        int index = 0;
+        DirectoryEntry found = null;
+        while (is_there == false) {
+            if (theDirectory.get(index).name == name) {
+                found = theDirectory.get(index);
+                theDirectory.remove(index);
+            }
+            index +=1;
+        }
+
+        if (is_there == false){
+            return null;
+        }
+
+        return found;
+
     }
 
     public void displayAllEntries() {
     /*
     Will display all entries in a nice and readable format
     */
+        
+        for (DirectoryEntry directory : theDirectory) {
+            System.out.println(directory.name + ": " + directory.number);
+        }    
     }
 
     
