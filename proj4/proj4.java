@@ -26,24 +26,24 @@ public class proj4 {
 
             int num = num_input.nextInt();
             
-            if (program == 1)
+            if (num == 1)
                 program_one();
-            else if (program == 2){
+            else if (num == 2){
                 program_two();
             }
-            else if (program == 3){
+            else if (num == 3){
                 program_three();
             }
-            else if (program == 4){
+            else if (num == 4){
                 program_four();
             }
-            else if (program == 5){
+            else if (num == 5){
                 program_five();
             }
-            else if (program == 6){
+            else if (num == 6){
                 program_six();
             }
-            else if (program == 7){
+            else if (num == 7){
                 program_seven();
             }
 
@@ -79,9 +79,19 @@ public class proj4 {
         System.out.println("Please enter phone number of contact: ");
         String number = phone_entry.nextLine();
 
-        my_directory.addOrChangeEntry(name, number);
+        String old_number = my_directory.addOrChangeEntry(name, number);
 
+        if (old_number == null) {
+            System.out.println("Successfully added new contact!");
+        } else {
+            System.out.println("Successfully changed contact!");
+        }
+    }
 
+    public static void program_three() {
+        Scanner name_entry = new Scanner(System.in);
+        System.out.println("Please enter name to delete: ");
+        my_directory.
     }
 
     

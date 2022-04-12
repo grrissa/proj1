@@ -23,7 +23,7 @@ public class PhoneDirectory {
                 is_there = true;
                 old = theDirectory.get(index).number;
                 DirectoryEntry new_entry = new DirectoryEntry(name, number);
-                theDirectory.set(i, new_entry);
+                theDirectory.set(index, new_entry);
             }
             index +=1;
         }
