@@ -3,11 +3,11 @@ import java.util.*;
 
 public class PhoneDirectory {
 
-    public static void main(String[] args) {
-        private List<DirectoryEntry> theDirectory = new ArrayList<>();
-    }
+    
+    List<DirectoryEntry> theDirectory = new ArrayList<>();
+    
 
-    // constructor and accessor methods
+    // NEED TO MAKE CONSTRUCTOR AND ACCESSOR METHODS
 
     public String addOrChangeEntry(String name, String number){
     /*
@@ -25,7 +25,7 @@ public class PhoneDirectory {
                 DirectoryEntry new_entry = new DirectoryEntry(name, number);
                 theDirectory.set(i, new_entry);
             }
-            index +=1
+            index +=1;
         }
 
         if (is_there == false) {
