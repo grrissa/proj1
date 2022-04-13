@@ -12,8 +12,12 @@ public class PhoneDirectory {
         /* 
            Method that displays ...
        */
-           return "something"; //ADD SOMETHING
-       }
+        String name = "";
+        for (DirectoryEntry directory : theDirectory) {
+            name += directory.name + ": " + directory.number +"\n";
+        }   
+        return name; //ADD SOMETHING
+        }
 
     public String addOrChangeEntry(String name, String number){
     /*
@@ -25,7 +29,7 @@ public class PhoneDirectory {
         int index = 0;
         String old = "";
         while (is_there == false) {
-            if ((theDirectory.get(index).name == name) && (index < theDirectory.length))  {
+            if ((theDirectory.get(index).name == name) && (index < theDirectory.size()))  {
                 is_there = true;
                 old = theDirectory.get(index).number;
                 DirectoryEntry new_entry = new DirectoryEntry(name, number);
@@ -52,7 +56,7 @@ public class PhoneDirectory {
         int index = 0;
         DirectoryEntry found = null;
         while (is_there == false) {
-            if ((theDirectory.get(index).name == name) && (index < theDirectory.length)) {
+            if ((theDirectory.get(index).name == name) && (index < theDirectory.size())) {
                 found = theDirectory.get(index);
             }
             index +=1;
@@ -73,7 +77,7 @@ public class PhoneDirectory {
         boolean is_there = false;
         int index = 0;
         DirectoryEntry found = null;
-        while ((is_there == false) && (index < theDirectory.length)) {
+        while ((is_there == false) && (index < theDirectory.size())) {
             if (theDirectory.get(index).name == name) {
                 found = theDirectory.get(index);
                 theDirectory.remove(index);

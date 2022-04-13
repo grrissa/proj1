@@ -1,5 +1,6 @@
 package proj4;
 import java.util.Scanner;
+import java.io.*;
 
 // ok two questions:
 // 1. program_one() with the file loading? how does that work like whats the file format
@@ -65,11 +66,41 @@ public class proj4 {
     }
 
     public static void program_one() {
-        Scanner file_input = new Scanner(System.in);
-        System.out.println("Please enter the file name that you would like to be loaded: ");
-        String file_name = file_input.nextLine(); 
+ 
         
-        // im confused bc what is the format of this file
+        String inputLine;
+        BufferedReader input;
+
+        try {
+            // asks user to input file to read
+            Scanner file_input = new Scanner(System.in);
+            System.out.println("Please enter the file name that you would like to be loaded: ");
+            String file_name = file_input.nextLine();
+            input = new BufferedReader(new FileReader(file_name));
+
+            // loop that reads the infile line by line
+            String[] entry = null;
+            while ((inputLine = input.readLine()) != null) {
+                entry = inputLine.split(":");
+                my_directory.addOrChangeEntry(entry[0], entry[1].trim());
+            }
+            input.close();
+
+        } // end try
+
+        // catching exceptions
+        catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+            System.exit(1); 
+        }
+        catch (IOException e){
+            System.out.println(e.getMessage());
+            System.exit(1); //IO error, exit program
+        } // end catch
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
     }
 
     public static void program_two() {
@@ -106,9 +137,49 @@ public class proj4 {
         Scanner name_entry = new Scanner(System.in);
         System.out.println("Please enter the name of an entry you would like to find: ");
         String name = name_entry.nextLine();
-        my_directory.searchEntry(name);
+        DirectoryEntry found = my_directory.searchEntry(name);
+        if (found == null) {
+            System.out.println("Contact not found.");
+        } else {
+            System.out.println("Successfully found contact!");
+    }}
+
+
+    public static void program_five() {
+        
+    }
+
+    public static void program_six() {
+        try {
+            Scanner file_s = new Scanner(System.in);
+            System.out.println("Please enter the file name that you would like to save the contents to: ");
+            String output_file = file_s.nextLine(); 
+            PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
+
+            output.println(my_directory);
+            
+            output.close();
+
+        } // end try
+
+        // catching exceptions
+        catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+            System.exit(1); 
+        }
+        catch (IOException e){
+            System.out.println(e.getMessage());
+            System.exit(1); //IO error, exit program
+        } // end catch
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
+
     }
 
     
-    
+    public static void program_seven() {
+        System.exit(1);
+    }
 }

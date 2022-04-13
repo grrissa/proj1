@@ -1,8 +1,8 @@
 package proj4;
 
 public class DirectoryEntry {
-    String name = "";
-    String number = "";
+    String name = null;
+    String number = null;
     
 
     public DirectoryEntry(String n, String num){
