@@ -4,7 +4,11 @@ import java.util.*;
 public class PhoneDirectory {
 
     
-    List<DirectoryEntry> theDirectory = new ArrayList<>();
+    List<DirectoryEntry> theDirectory;
+
+    public PhoneDirectory() {
+        this.theDirectory = new ArrayList<>();
+    }
     
 
     // NEED TO MAKE CONSTRUCTOR AND ACCESSOR METHODS
@@ -25,11 +29,11 @@ public class PhoneDirectory {
         int index = 0;
         String old = "";
         while (is_there == false) {
-            if ((theDirectory.get(index).name == name) && (index < theDirectory.length))  {
+            if ((this.theDirectory.get(index).name == name) && (index < this.theDirectory.length))  {
                 is_there = true;
-                old = theDirectory.get(index).number;
+                old = this.theDirectory.get(index).number;
                 DirectoryEntry new_entry = new DirectoryEntry(name, number);
-                theDirectory.set(index, new_entry);
+                this.theDirectory.set(index, new_entry);
             }
             index +=1;
         }
@@ -52,8 +56,8 @@ public class PhoneDirectory {
         int index = 0;
         DirectoryEntry found = null;
         while (is_there == false) {
-            if ((theDirectory.get(index).name == name) && (index < theDirectory.length)) {
-                found = theDirectory.get(index);
+            if ((this.theDirectory.get(index).name == name) && (index < this.theDirectory.length)) {
+                found = this.theDirectory.get(index);
             }
             index +=1;
         }
@@ -73,10 +77,10 @@ public class PhoneDirectory {
         boolean is_there = false;
         int index = 0;
         DirectoryEntry found = null;
-        while ((is_there == false) && (index < theDirectory.length)) {
-            if (theDirectory.get(index).name == name) {
+        while ((is_there == false) && (index < this.theDirectory.length)) {
+            if (this.theDirectory.get(index).name == name) {
                 found = theDirectory.get(index);
-                theDirectory.remove(index);
+                this.theDirectory.remove(index);
             }
             index +=1;
         }
@@ -94,7 +98,7 @@ public class PhoneDirectory {
     Will display all entries in a nice and readable format
     */
         
-        for (DirectoryEntry directory : theDirectory) {
+        for (DirectoryEntry directory : this.theDirectory) {
             System.out.println(directory.name + ": " + directory.number);
         }    
     }
