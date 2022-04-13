@@ -16,7 +16,7 @@ public class proj4 {
         while (!stop) {
 
             Scanner num_input = new Scanner(System.in);
-            System.out.println("Please enter number to select an option");
+            System.out.println("\nPlease enter number to select an option: ");
 
             System.out.println("1. Load a previously saved phone directory from file");
             System.out.println("2. Add or change an entry");
@@ -48,9 +48,7 @@ public class proj4 {
             else if (num == 7){
                 program_seven();
             }
-
         }
-
     }
 
     public static void program_one() {
@@ -62,7 +60,7 @@ public class proj4 {
         try {
             // asks user to input file to read
             Scanner file_input = new Scanner(System.in);
-            System.out.println("Please enter the file name that you would like to be loaded: ");
+            System.out.println("\nPlease enter the file name that you would like to be loaded: ");
             String file_name = file_input.nextLine();
             input = new BufferedReader(new FileReader(file_name));
 
@@ -93,7 +91,7 @@ public class proj4 {
 
     public static void program_two() {
         Scanner name_entry = new Scanner(System.in);
-        System.out.println("Please enter name of contact: ");
+        System.out.println("\nPlease enter name of contact: ");
         String name = name_entry.nextLine();
 
         Scanner phone_entry = new Scanner(System.in);
@@ -103,15 +101,15 @@ public class proj4 {
         String old_number = my_directory.addOrChangeEntry(name, number);
 
         if (old_number == null) {
-            System.out.println("Successfully added new contact!");
+            System.out.println("\nSuccessfully added new contact!");
         } else {
-            System.out.println("Successfully changed contact!");
+            System.out.println("\nSuccessfully changed contact!");
         }
     }
 
     public static void program_three() {
         Scanner name_entry = new Scanner(System.in);
-        System.out.println("Please enter name to delete: ");
+        System.out.println("\nPlease enter name to delete: ");
         String name = name_entry.nextLine();
         DirectoryEntry removed =  my_directory.removeEntry(name);
         if (removed == null) {
@@ -123,7 +121,7 @@ public class proj4 {
 
     public static void program_four() {
         Scanner name_entry = new Scanner(System.in);
-        System.out.println("Please enter the name of an entry you would like to find: ");
+        System.out.println("\nPlease enter the name of an entry you would like to find: ");
         String name = name_entry.nextLine();
         DirectoryEntry found = my_directory.searchEntry(name);
         if (found == null) {
@@ -140,7 +138,7 @@ public class proj4 {
     public static void program_six() {
         try {
             Scanner file_s = new Scanner(System.in);
-            System.out.println("Please enter the file name that you would like to save the contents to: ");
+            System.out.println("\nPlease enter the file name that you would like to save the contents to: ");
             String output_file = file_s.nextLine(); 
             PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
