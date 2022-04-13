@@ -10,11 +10,10 @@ import java.io.*;
 public class proj4 {
 
     static PhoneDirectory my_directory = new PhoneDirectory();
+    static boolean stop = false;
     public static void main(String[] args) {
-        char repeat_again = 'n';
         
-
-        do {
+        while (!stop) {
 
             Scanner num_input = new Scanner(System.in);
             System.out.println("Please enter number to select an option");
@@ -50,18 +49,7 @@ public class proj4 {
                 program_seven();
             }
 
-            //asks the user whether they would like to run the program again
-            Scanner again = new Scanner(System.in);
-            System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
-            repeat_again = again.next().charAt(0);
-
-            //ensures user inputs a valid character
-            while ((repeat_again!='y') && (repeat_again!='n') && (repeat_again!='Y') && (repeat_again!='N') ) {
-                System.out.println("\nInvalid response: \nDo you want to run the program again (y for yes and n for no)?");
-                repeat_again = again.next().charAt(0);
-            }
-        
-        } while ((repeat_again!='n') && (repeat_again!='N'));
+        }
 
     }
 
@@ -82,7 +70,7 @@ public class proj4 {
             String[] entry = null;
             while ((inputLine = input.readLine()) != null) {
                 entry = inputLine.split(":");
-                my_directory.addOrChangeEntry(entry[0], entry[1].trim());
+                my_directory.addOrChangeEntry(entry[0], entry[1]);
             }
             input.close();
 
@@ -146,7 +134,7 @@ public class proj4 {
 
 
     public static void program_five() {
-        
+        my_directory.displayAllEntries();
     }
 
     public static void program_six() {
@@ -180,6 +168,7 @@ public class proj4 {
 
     
     public static void program_seven() {
+        stop = true;
         System.exit(1);
     }
 }
