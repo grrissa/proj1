@@ -7,9 +7,11 @@ import java.util.Scanner;
 //    like should the main MAKE a new directory that they edit etc?
 
 public class proj4 {
+
+    static PhoneDirectory my_directory = new PhoneDirectory();
     public static void main(String[] args) {
         char repeat_again = 'n';
-        PhoneDirectory my_directory = new PhoneDirectory();
+        
 
         do {
 
@@ -65,7 +67,7 @@ public class proj4 {
     public static void program_one() {
         Scanner file_input = new Scanner(System.in);
         System.out.println("Please enter the file name that you would like to be loaded: ");
-        String file_name = kv.nextLine(); 
+        String file_name = file_input.nextLine(); 
         
         // im confused bc what is the format of this file
     }
@@ -91,7 +93,20 @@ public class proj4 {
     public static void program_three() {
         Scanner name_entry = new Scanner(System.in);
         System.out.println("Please enter name to delete: ");
-        my_directory.
+        String name = name_entry.nextLine();
+        DirectoryEntry removed =  my_directory.removeEntry(name);
+        if (removed == null) {
+            System.out.println("Contact not found.");
+        } else {
+            System.out.println("Successfully removed contact!");
+        }
+    }
+
+    public static void program_four() {
+        Scanner name_entry = new Scanner(System.in);
+        System.out.println("Please enter the name of an entry you would like to find: ");
+        String name = name_entry.nextLine();
+        my_directory.searchEntry(name);
     }
 
     

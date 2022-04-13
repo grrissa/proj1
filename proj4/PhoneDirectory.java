@@ -8,6 +8,12 @@ public class PhoneDirectory {
     
 
     // NEED TO MAKE CONSTRUCTOR AND ACCESSOR METHODS
+    public String toString() {
+        /* 
+           Method that displays ...
+       */
+           return "something"; //ADD SOMETHING
+       }
 
     public String addOrChangeEntry(String name, String number){
     /*
