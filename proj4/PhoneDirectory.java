@@ -51,7 +51,7 @@ public class PhoneDirectory {
         return old; 
     }
 
-    public DirectoryEntry searchEntry(String name){
+    public DirectoryEntry searchEntry(String find_name){
     /*
     search the entry referenced by name; return the 
     entry searched or null if there is no entry for name
@@ -60,7 +60,7 @@ public class PhoneDirectory {
         int index = 0;
         DirectoryEntry found = null;
         while ((is_there == false) && (index < this.theDirectory.size())) {
-            if ( (this.theDirectory.get(index)).name == name ) {
+            if ( (this.theDirectory.get(index)).name == find_name ) {
                 found = this.theDirectory.get(index);
             }
             index +=1;
