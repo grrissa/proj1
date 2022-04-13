@@ -60,7 +60,7 @@ public class PhoneDirectory {
         int index = 0;
         DirectoryEntry found = null;
         while ((is_there == false) && (index < this.theDirectory.size())) {
-            if ((this.theDirectory.get(index).name == name) ) {
+            if ( (this.theDirectory.get(index)).name == name ) {
                 found = this.theDirectory.get(index);
                 is_there = true;
             }
