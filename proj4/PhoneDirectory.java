@@ -62,6 +62,7 @@ public class PhoneDirectory {
         while ((is_there == false) && (index < this.theDirectory.size())) {
             if ( (this.theDirectory.get(index)).name == find_name ) {
                 found = this.theDirectory.get(index);
+                is_there = true;
             }
             index +=1;
         }
@@ -85,6 +86,7 @@ public class PhoneDirectory {
             if (this.theDirectory.get(index).name == name) {
                 found = theDirectory.get(index);
                 this.theDirectory.remove(index);
+                is_there = true;
             }
             index +=1;
         }
