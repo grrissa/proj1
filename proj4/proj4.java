@@ -65,7 +65,7 @@ public class proj4 {
             input = new BufferedReader(new FileReader(file_name));
 
             // loop that reads the infile line by line
-            while ( ((inputLine = input.readLine()) != null) && ( (inputLine = input.readLine()).trim() != "" )) {
+            while ( ((inputLine = input.readLine()) != null) ) {
                 String[] entry = inputLine.split(":");
                 my_directory.addOrChangeEntry(entry[0].trim(), entry[1].trim());
             }
