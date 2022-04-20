@@ -67,7 +67,7 @@ public class proj4 {
             // loop that reads the infile line by line
             while (((inputLine = input.readLine()) != null) && ((inputLine = input.readLine()) != "" )&& ((inputLine = input.readLine()) != "\n" )) {
                 String[] entry = inputLine.split(":");
-                my_directory.addOrChangeEntry(entry[0].trim(), entry[1].replaceAll("\\s",""));
+                my_directory.addOrChangeEntry(entry[0].trim(), entry[1].trim());
             }
             input.close();
 
