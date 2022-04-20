@@ -138,10 +138,17 @@ public class proj4 {
             Scanner file_s = new Scanner(System.in);
             System.out.println("\nPlease enter the file name that you would like to save the contents to: ");
             String output_file = file_s.nextLine(); 
+            Scanner ow = new Scanner(System.in);
+            System.out.println("\nWould you like to replace or append: ");
+            char overwrite = ow.next().charAt(0); 
             PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
-            output.println(my_directory);
-            
+            if ((overwrite == 'y')||(overwrite == 'Y')){
+                output.println(my_directory);
+            }
+            else {
+                output.println(my_directory);
+            }
             output.close();
 
         } // end try
