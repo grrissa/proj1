@@ -17,8 +17,15 @@ public class PhoneDirectory {
            Method that displays ...
        */
         String name = "";
+        DirectoryEntry first = this.theDirectory.get(0);
+        name += first.name + ": " + first.number;
+        boolean is_first = true;
+        
         for (DirectoryEntry directory : theDirectory) {
-            name += directory.name + ": " + directory.number +"\n";
+            if (is_first)
+                is_first = false;
+            else                
+                name += "\n" + directory.name + ": " + directory.number;
         }   
         return name; //ADD SOMETHING
         }
