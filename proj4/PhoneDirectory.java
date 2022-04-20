@@ -32,8 +32,8 @@ public class PhoneDirectory {
         boolean is_there = false;
         int index = 0;
         String old = "";
-        while ((is_there == false)&& (index < this.theDirectory.size())) {
-            if ((this.theDirectory.get(index).name == name) )  {
+        while ((is_there == false) && (index < this.theDirectory.size())) {
+            if ( name.equals((this.theDirectory.get(index)).name))  {
                 is_there = true;
                 old = this.theDirectory.get(index).number;
                 DirectoryEntry new_entry = new DirectoryEntry(name, number);
@@ -60,7 +60,7 @@ public class PhoneDirectory {
         int index = 0;
         DirectoryEntry found = null;
         while ((is_there == false) && (index < this.theDirectory.size())) {
-            if ( (this.theDirectory.get(index)).name == find_name ) {
+            if ( find_name.equals((this.theDirectory.get(index)).name) ) {
                 found = this.theDirectory.get(index);
                 is_there = true;
             }
@@ -83,7 +83,7 @@ public class PhoneDirectory {
         int index = 0;
         DirectoryEntry found = null;
         while ((is_there == false) && (index < this.theDirectory.size())) {
-            if (this.theDirectory.get(index).name == name) {
+            if (name.equals((this.theDirectory.get(index)).name)) {
                 found = theDirectory.get(index);
                 this.theDirectory.remove(index);
                 is_there = true;
