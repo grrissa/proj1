@@ -65,17 +65,9 @@ public class proj4 {
             input = new BufferedReader(new FileReader(file_name));
 
             // loop that reads the infile line by line
-            String[] entry = null;
             while (((inputLine = input.readLine()) != null) && ((inputLine = input.readLine()) != "" )&& ((inputLine = input.readLine()) != "\n" )) {
-                inputLine = inputLine.strip();
-                // 
-
-                // ATTENTION!!!!!!!!!!!!!!! added above line
-
-
-                //
-                entry = inputLine.split(":");
-                my_directory.addOrChangeEntry(entry[0], entry[1].replaceAll("\\s",""));
+                String[] entry = inputLine.split(":");
+                my_directory.addOrChangeEntry(entry[0].trim(), entry[1].replaceAll("\\s",""));
             }
             input.close();
 
@@ -84,7 +76,6 @@ public class proj4 {
         // catching exceptions
         catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-            System.exit(1); 
         }
         catch (IOException e){
             System.out.println(e.getMessage());
