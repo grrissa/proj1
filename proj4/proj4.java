@@ -16,6 +16,7 @@ public class proj4 {
         
         while (!stop) {
 
+            // will ask the user what program they would like to run
             Scanner num_input = new Scanner(System.in);
             System.out.println("\nPlease enter number to select an option: ");
 
@@ -53,6 +54,10 @@ public class proj4 {
     }
 
     public static void program_one() {
+    /*
+    Will ask the user what file they would like to be loaded and the load that file into 
+    the phone directory.
+    */
  
         
         String inputLine;
