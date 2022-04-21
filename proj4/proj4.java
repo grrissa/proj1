@@ -188,10 +188,6 @@ public class proj4 {
         } // end try
 
         // catching exceptions
-        catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-            System.exit(1); 
-        }
         catch (IOException e){
             System.out.println(e.getMessage());
             System.exit(1); //IO error, exit program
