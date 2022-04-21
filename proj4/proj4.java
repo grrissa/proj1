@@ -58,8 +58,7 @@ public class proj4 {
     Will ask the user what file they would like to be loaded and the load that file into 
     the phone directory.
     */
- 
-        
+   
         String inputLine;
         BufferedReader input;
 
@@ -94,6 +93,10 @@ public class proj4 {
     }
 
     public static void program_two() {
+    /*
+    Will allow the user to add or change a directory entry
+    */
+
         Scanner name_entry = new Scanner(System.in);
         System.out.println("\nPlease enter name of contact: ");
         String name = name_entry.nextLine();
@@ -112,6 +115,10 @@ public class proj4 {
     }
 
     public static void program_three() {
+    /*
+    Will allow the user to remove a directory entry
+    */
+
         Scanner name_entry = new Scanner(System.in);
         System.out.println("\nPlease enter name to delete: ");
         String name = name_entry.nextLine();
@@ -124,6 +131,10 @@ public class proj4 {
     }
 
     public static void program_four() {
+    /*
+    Will allow the user to search for an entry
+    */
+
         Scanner name_entry = new Scanner(System.in);
         System.out.println("\nPlease enter the name of an entry you would like to find: ");
         String name = name_entry.nextLine();
@@ -131,11 +142,14 @@ public class proj4 {
         if (found == null) {
             System.out.println("Contact not found.");
         } else {
-            System.out.println("Successfully found contact!");
+            System.out.println(found.name + ": " + found.number);
     }}
 
 
     public static void program_five() {
+    /*
+    Will display all the entries in the directory
+    */
         my_directory.displayAllEntries();
     }
 
@@ -191,6 +205,9 @@ public class proj4 {
 
     
     public static void program_seven() {
+    /*
+    Will terminate the driver program
+    */
         stop = true;
         System.exit(1);
     }
