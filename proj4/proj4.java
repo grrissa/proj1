@@ -144,19 +144,31 @@ public class proj4 {
             Scanner file_s = new Scanner(System.in);
             System.out.println("\nPlease enter the file name that you would like to save the contents to: ");
             String output_file = file_s.nextLine(); 
-            Scanner ow = new Scanner(System.in);
-            System.out.println("\nWould you like to replace or append: ");
-            char overwrite = ow.next().charAt(0); 
-            PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
+            char overwrite = '1';
+            
+            if (output_file.exists()) {
+                Scanner ow = new Scanner(System.in);
+                System.out.println("\nWould you like to replace or append? \n1)replace\n2)append ");
+                overwrite = ow.next().charAt(0); 
+                PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
-            if ((overwrite == 'y')||(overwrite == 'Y')){
+                //ensures user inputs a valid character
+                while ((overwrite!='1') && (overwrite !='2')) {
+                    System.out.println("\nInvalid response: \nWould you like to replace or append? (1 for replace, 2 for append)?");
+                    repeat_again = again.next().charAt(0);
+                }
+            }
+
+            if (overwrite == '1'){ //replace
                 output.println(my_directory);
             }
-            else {
-                output.println(my_directory);
+            else { //append
+                output.println(my_directory,true);
             }
             output.close();
 
+
+                
         } // end try
 
         // catching exceptions
