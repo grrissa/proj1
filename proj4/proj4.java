@@ -140,35 +140,37 @@ public class proj4 {
     }
 
     public static void program_six() {
+    /*
+    Will ask the user what file they would like to save the contents of the dictionary to and then ask 
+    if they would like to append the contents of the file or completely replace them
+    */
         try {
             Scanner file_s = new Scanner(System.in);
             System.out.println("\nPlease enter the file name that you would like to save the contents to: ");
             String output_file = file_s.nextLine(); 
-            char overwrite = '1';
-            
-            if (output_file.exists()) {
-                Scanner ow = new Scanner(System.in);
-                System.out.println("\nWould you like to replace or append? \n1)replace\n2)append ");
-                overwrite = ow.next().charAt(0); 
-                PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
-                //ensures user inputs a valid character
-                while ((overwrite!='1') && (overwrite !='2')) {
-                    System.out.println("\nInvalid response: \nWould you like to replace or append? (1 for replace, 2 for append)?");
-                    repeat_again = again.next().charAt(0);
-                }
+            Scanner ow = new Scanner(System.in);
+            System.out.println("\nWould you like to replace or append? \n1)replace\n2)append ");
+            char overwrite = ow.next().charAt(0); 
+
+            //ensures user inputs a valid character
+            while ( (overwrite!='1') && (overwrite!='2') ) {
+                System.out.println("\nInvalid response: \nWould you like to replace or append? (1 for replace, 2 for append)?");
+                overwrite = ow.next().charAt(0);
             }
+
+            PrintWriter output;
 
             if (overwrite == '1'){ //replace
-                output.println(my_directory);
+                output = new PrintWriter(new FileOutputStream(output_file));
             }
             else { //append
-                output.println(my_directory,true);
+                output = new PrintWriter(new FileOutputStream(output_file,true));   
             }
+
+            output.println(my_directory); //prints contents of dictionary to file
             output.close();
-
-
-                
+     
         } // end try
 
         // catching exceptions
