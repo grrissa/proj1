@@ -11,6 +11,10 @@ public class DirectoryEntry {
     
 
     public DirectoryEntry(String n, String num){
+    /*
+    Constructor method that creates a new instance of the DirectoryEntry object 
+    with two instance variables
+    */
         name = n;
         number = num;
     }

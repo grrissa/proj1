@@ -1,5 +1,13 @@
+/*************************************************************************************
+Brief Summary: Program that defines a PhoneDirectory object that is an ArrayList made up of
+DirectoryEntry objects.  User can call methods to add or change entries, remove entries, 
+search for entries, or display entries.  
+
+Last Date Modified: 4/20/2022
+*************************************************************************************/
 package proj4;
 import java.util.*;
+
 
 public class PhoneDirectory {
 
@@ -7,27 +15,31 @@ public class PhoneDirectory {
     List<DirectoryEntry> theDirectory;
 
     public PhoneDirectory() {
+    /*
+    Constructor that creates a the PhoneDirectory object array list
+    */
         this.theDirectory = new ArrayList<>();
     }
     
-
-    // NEED TO MAKE CONSTRUCTOR AND ACCESSOR METHODS
     public String toString() {
         /* 
-           Method that displays ...
+           Method that displays the contents of the PhoneDirectory in a readable format
        */
         String name = "";
+
+        // will add the first entry of the Directory to the string
         DirectoryEntry first = this.theDirectory.get(0);
         name += first.name + ": " + first.number;
         boolean is_first = true;
         
+        // will add every entry of the dictionary to the string and skip the first
         for (DirectoryEntry directory : theDirectory) {
             if (is_first)
                 is_first = false;
             else                
                 name += "\n" + directory.name + ": " + directory.number;
         }   
-        return name; //ADD SOMETHING
+        return name; 
         }
 
     public String addOrChangeEntry(String name, String number){
@@ -39,6 +51,9 @@ public class PhoneDirectory {
         boolean is_there = false;
         int index = 0;
         String old = "";
+
+        // will iterate through directory and check if name is in the dictionary 
+        // and either add or change entry
         while ((is_there == false) && (index < this.theDirectory.size())) {
             if ( name.equals((this.theDirectory.get(index)).name))  {
                 is_there = true;
@@ -63,9 +78,12 @@ public class PhoneDirectory {
     search the entry referenced by name; return the 
     entry searched or null if there is no entry for name
     */
+
         boolean is_there = false;
         int index = 0;
         DirectoryEntry found = null;
+
+        // will iterate through directory and check if name is in the dictionary 
         while ((is_there == false) && (index < this.theDirectory.size())) {
             if ( find_name.equals((this.theDirectory.get(index)).name) ) {
                 found = this.theDirectory.get(index);
@@ -89,6 +107,9 @@ public class PhoneDirectory {
         boolean is_there = false;
         int index = 0;
         DirectoryEntry found = null;
+
+        // will iterate through directory and check if name is in the dictionary 
+        // and remove that entry
         while ((is_there == false) && (index < this.theDirectory.size())) {
             if (name.equals((this.theDirectory.get(index)).name)) {
                 found = theDirectory.get(index);

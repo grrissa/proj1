@@ -1,11 +1,12 @@
 package proj4;
 import java.util.Scanner;
 import java.io.*;
-
-// ok two questions:
-// 1. program_one() with the file loading? how does that work like whats the file format
-// 2. should we make a new empty directory? or should the user input a directory that they want to edit
-//    like should the main MAKE a new directory that they edit etc?
+/*************************************************************************************
+Brief Summary: Program that prompts user to pick between 7 programs that either modify or access the
+phone directory.  Will give the user an option to load a file into a new directory or save the directory
+into a new file.
+Last Date Modified: 4/20/2022
+*************************************************************************************/
 
 public class proj4 {
 
