@@ -203,6 +203,9 @@ public class proj4 {
 
     
     public static void program_seven() {
+    /*
+    Will terminate the driver program
+    */
         stop = true;
         System.exit(1);
     }
