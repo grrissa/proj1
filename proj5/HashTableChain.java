@@ -67,6 +67,14 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
         return null;
     }
 
+    public boolean isEmpty(){
+        return numKeys==0;
+    }
+
+    public int size(){
+        return numKeys;
+    }
+
     public v put(k key, v value){
         int index = key.hashCode() % table.length;
         if (index < 0){
