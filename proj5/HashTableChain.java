@@ -188,6 +188,7 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
         }
 
         table = new_table;
+        new_table = null;
         CAPACITY = next_prime;
 
 
