@@ -9,13 +9,16 @@ public class Compress {
     static String file_name = "";
     static File comp_file;
     static File og_file;
-    static HashMap<Integer,int[]> Map = new HashMap<Integer,int[]>();
+    static String output_file;
+    static int table_size;
+    static long time;
+    //static HashMap<Integer,int[]> Map = new HashMap<Integer,int[]>();
     public static void main(String[] args) { //args will be the name of the file
         //base table size based off of file size... want to avoid rehashing
         
         do {
             BufferedReader input = null;
-            if (args[0].length() > 0) {
+            if ((args != null) && (args.length > 0)) {
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
@@ -26,7 +29,7 @@ public class Compress {
                     args[0] = ""; 
                 }
             }
-            if (args[0].length() == 0) {
+            if ((args == null) || (args.length == 0)) {
                 boolean valid_file = false;
                 
                 do {
@@ -48,8 +51,8 @@ public class Compress {
             
             }
             long og_size = determine_size(og_file);
-            int table_size = table_size(og_size);
-
+            table_size = table_size(og_size);
+            output_file= file_name + ".zzz";
             compress(input);
             try {
                 PrintWriter output;
@@ -98,11 +101,52 @@ public class Compress {
             output the code
             if there is next char c in the input file, then p+c is assigned the code and insert the pair into the dictionary
     */
-        
-        
+        HashTableChain dic = new HashTableChain(table_size);
 
+        // how do we initialize for all possible chars that may occur?
 
+        try {
+            // loop that reads the infile line by line
+            String inputLine;
+            int index_on = 0;
+            int ahead = 0;
+            int num_of_dic = 0;
+            String to_add;
+            String p = "";
+            PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
+            while ( ((inputLine = original.readLine()) != null) ) {
+                
+                for(int i=0; i<(inputLine.length()); i++){
+                    char c = inputLine.charAt(i);
+                    if(dic.get(c) == null) { // if the char is not in the dic yet
+                        dic.put(c,num_of_dic);
+                        output.print(num_of_dic);
+                        num_of_dic++;
+                        p = "";
+                    }
+                    else if(dic.get(p+c) == null){ //if p+c is not in the dictionary
+                        output.print(dic.get(p)); //print value of p to file
+                        dic.put(p+c,num_of_dic); // insert p+c into dic
+                        num_of_dic++;
+                        p =""; 
+                    }
+                    p += c;
+                }
+            }
+            original.close();
+
+        } // end try
+
+        catch (IOException e){
+            System.out.println(e.getMessage());
+            System.exit(1); //IO error, exit program
+        } // end catch
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
     }
+
 
     public static void repeat_validation() {
         /*
