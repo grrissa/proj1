@@ -53,6 +53,7 @@ public class Compress {
             long og_size = determine_size(og_file);
             table_size = table_size(og_size);
             output_file= file_name + ".zzz";
+            comp_file = new File(output_file);
             compress(input);
             try {
                 PrintWriter output;
@@ -84,7 +85,7 @@ public class Compress {
     }
     public static int table_size(long file_size){
         // in this function calculate the size of the hash map and 
-
+        table_size = 97;
         return table_size;
     }
     public static long determine_size(File file) {
@@ -121,11 +122,13 @@ public class Compress {
                     if(dic.get(c) == null) { // if the char is not in the dic yet
                         dic.put(c,num_of_dic);
                         output.print(num_of_dic);
+                        System.out.print(num_of_dic);
                         num_of_dic++;
                         p = "";
                     }
                     else if(dic.get(p+c) == null){ //if p+c is not in the dictionary
                         output.print(dic.get(p)); //print value of p to file
+                        System.out.print(dic.get(p));
                         dic.put(p+c,num_of_dic); // insert p+c into dic
                         num_of_dic++;
                         p =""; 
