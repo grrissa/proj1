@@ -89,15 +89,15 @@ public class Decompress {
         try {
             BufferedReader input = new BufferedReader(new FileReader(file_name));
             String inputLine;
-            String p;
+            String p = "";
             // loop that reads the infile line by line
             while ( ((inputLine = input.readLine()) != null) ) {
                 //String<> values = inputLine.split();
                 
-                for() {
+                //for() {
                     if(dict.indexOf(p)!= -1){
                         
-                    }
+                ///    }
                 }
             }
             input.close();
