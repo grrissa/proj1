@@ -85,7 +85,7 @@ public class Compress {
     }
     public static int table_size(long file_size){
         // in this function calculate the size of the hash map and 
-        table_size = 97;
+        table_size = 997;
         return table_size;
     }
     public static long determine_size(File file) {
@@ -107,6 +107,7 @@ public class Compress {
         // how do we initialize for all possible chars that may occur?
 
         try {
+
             // loop that reads the infile line by line
             String inputLine;
             int index_on = 0;
@@ -115,18 +116,20 @@ public class Compress {
             String to_add;
             String p = "";
             PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
+
+            //initializing all possible chars
+            for(int i= 32; i<=126; i++) {
+                char letter_char = (char)i;
+                dic.put(letter_char, num_of_dic);
+                num_of_dic++;
+            }
+
+
             while ( ((inputLine = original.readLine()) != null) ) {
                 
                 for(int i=0; i<(inputLine.length()); i++){
                     char c = inputLine.charAt(i);
-                    if(dic.get(c) == null) { // if the char is not in the dic yet
-                        dic.put(c,num_of_dic);
-                        output.print(num_of_dic);
-                        System.out.print(num_of_dic);
-                        num_of_dic++;
-                        p = "";
-                    }
-                    else if(dic.get(p+c) == null){ //if p+c is not in the dictionary
+                    if(dic.get(p+c) == null){ //if p+c is not in the dictionary
                         output.print(dic.get(p)); //print value of p to file
                         System.out.print(dic.get(p));
                         dic.put(p+c,num_of_dic); // insert p+c into dic
@@ -135,7 +138,8 @@ public class Compress {
                     }
                     p += c;
                 }
-            }
+        }
+            output.close();
             original.close();
 
         } // end try
