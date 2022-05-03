@@ -48,6 +48,7 @@ public class Compress {
                     // making sure file is valid before continuing
                     catch (FileNotFoundException e) {
                         System.out.println("Invalid Filename.");
+                        valid_file = false;
                     }
                 } while (valid_file = false);
             

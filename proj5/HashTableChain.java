@@ -180,7 +180,7 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
         //will go through every index in table and then every entry in linked list to add entry into new table
         for (int i = 0; i < table.length; i++){
             //for(Entry<k,v> nextItem:table[i]){
-            for (int x = 0; i < table[i].size(); i++) {
+            for (int x = 0; x < table[i].size(); x++) {
                 
                 Entry<k,v> nextItem = table[i].get(x);
                 int index = (nextItem.getKey().hashCode()) % new_table.length;
