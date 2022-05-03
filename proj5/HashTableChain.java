@@ -39,6 +39,7 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
     private int numKeys;
     private static int CAPACITY; // i am making this a non final bc in rehash we have to change it again
     private static final double LOAD_THRESHOLD = 0.75; //tbd? i found num this on the internet
+    private int num_rehash = 0;
     //may need more
 
     public HashTableChain() {// CONSTRUCTOR
@@ -57,6 +58,10 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
 
     public int size(){
         return numKeys;
+    }
+
+    public int number_rehash(){
+        return num_rehash;
     }
 
     public v get(Object key){
@@ -163,12 +168,12 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
             if (isPrime(prime))
                 found = true;
         }
-     
+        System.out.print(prime);
         return prime;
     }
      
     public void rehash() {
-
+        num_rehash++;
         int next_prime = nextPrime(CAPACITY*2);
         LinkedList<Entry<k,v>>[] new_table = new LinkedList[next_prime];
 

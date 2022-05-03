@@ -11,7 +11,9 @@ public class Compress {
     static File og_file;
     static String output_file;
     static int table_size;
-    static long time;
+    static long time = 0;
+    static int rehash_num;
+    static int num_entries;
     //static HashMap<Integer,int[]> Map = new HashMap<Integer,int[]>();
     public static void main(String[] args) { //args will be the name of the file
         //base table size based off of file size... want to avoid rehashing
@@ -63,8 +65,9 @@ public class Compress {
                 
                 output.println("Compression of " + file_name); 
                 output.println("Compressed from " + og_size + " Kilobytes to " + determine_size(comp_file)+" Kilobytes"); 
-                output.println("Compression of " + file_name); 
-                output.println("Compression of " + file_name); 
+                output.println("Compression took " + time + " seconds"); 
+                output.println("The dictionary contains " + num_entries + " total entries"); 
+                output.println("The table was rehashed " + rehash_num + " times"); 
 
                 output.close();
         
@@ -85,7 +88,7 @@ public class Compress {
     }
     public static int table_size(long file_size){
         // in this function calculate the size of the hash map and 
-        table_size = 997;
+        table_size = 97;
         return table_size;
     }
     public static long determine_size(File file) {
@@ -102,7 +105,7 @@ public class Compress {
             output the code
             if there is next char c in the input file, then p+c is assigned the code and insert the pair into the dictionary
     */
-        HashTableChain dic = new HashTableChain(table_size);
+        HashTableChain dic = new HashTableChain (table_size);
 
         // how do we initialize for all possible chars that may occur?
 
@@ -118,12 +121,13 @@ public class Compress {
             PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
             //initializing all possible chars
+            
             for(int i= 32; i<=126; i++) {
                 char letter_char = (char)i;
-                dic.put(letter_char, num_of_dic);
+                dic.put(Character.toString(letter_char), num_of_dic);
                 num_of_dic++;
             }
-
+            
 
             while ( ((inputLine = original.readLine()) != null) ) {
                 
@@ -152,6 +156,8 @@ public class Compress {
             System.out.println(e.getMessage());
             System.exit(1);
         }
+        num_entries = dic.size();
+        rehash_num = dic.number_rehash();
     }
 
 

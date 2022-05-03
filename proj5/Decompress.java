@@ -85,17 +85,25 @@ public class Decompress {
     }
 
     public static void decompress(){
-        ArrayList<String> dict = new ArrayList<String>(table_size);
+        HashTableChain dic = new HashTableChain(table_size);
+        
         try {
             BufferedReader input = new BufferedReader(new FileReader(file_name));
             String inputLine;
+            int num_of_dic = 0;
             String p = "";
             // loop that reads the infile line by line
+            //initializing all possible chars
+            for(int i= 32; i<=126; i++) {
+                char letter_char = (char)i;
+                dic.put(Character.toString(letter_char));
+
+            }
             while ( ((inputLine = input.readLine()) != null) ) {
                 //String<> values = inputLine.split();
                 
                 //for() {
-                    if(dict.indexOf(p)!= -1){
+                    if(dic.indexOf(p)!= -1){
                         
                 ///    }
                 }
