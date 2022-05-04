@@ -177,23 +177,26 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
      
     public void rehash() {
         num_rehash++;
-        int next_prime = nextPrime(CAPACITY*2);
+        int next_prime = nextPrime(capacity_used*2);
         LinkedList<Entry<k,v>>[] new_table = new LinkedList[next_prime];
 
         //will go through every index in table and then every entry in linked list to add entry into new table
         for (int i = 0; i < table.length; i++){
             //for(Entry<k,v> nextItem:table[i]){
-            for (int x = 0; x < table[i].size(); x++) {
-                
-                Entry<k,v> nextItem = table[i].get(x);
-                int index = (nextItem.getKey().hashCode()) % new_table.length;
-                if (index < 0){
-                    index += new_table.length;
+            
+            if (table[i] != null) {  
+                for (int x = 0; x < table[i].size(); x++) {
+                    
+                    Entry<k,v> nextItem = table[i].get(x);
+                    int index = (nextItem.getKey().hashCode()) % new_table.length;
+                    if (index < 0){
+                        index += new_table.length;
+                    }
+                    if (new_table[index] == null){
+                        new_table[index] = new LinkedList<>();
+                    }
+                    new_table[index].addLast(new Entry<>(nextItem.getKey(), nextItem.getValue()));
                 }
-                if (new_table[index] == null){
-                    new_table[index] = new LinkedList<>();
-                }
-                new_table[index].addFirst(new Entry<>(nextItem.getKey(), nextItem.getValue()));
             }
         }
 
