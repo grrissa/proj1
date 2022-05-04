@@ -37,18 +37,21 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
 
     private LinkedList<Entry<k,v>>[] table; // array of linked lists
     private int numKeys;
-    private static int CAPACITY; // i am making this a non final bc in rehash we have to change it again
+    private static final int CAPACITY = 101;
+    private static int capacity_used;
     private static final double LOAD_THRESHOLD = 0.75; //tbd? i found num this on the internet
     private int num_rehash = 0;
     //may need more
 
     public HashTableChain() {// CONSTRUCTOR
         table = new LinkedList[CAPACITY];
+        capacity_used = CAPACITY;
         numKeys = 0;
     }
 
     public HashTableChain(int cap) {
         table = new LinkedList[cap];
+        capacity_used = cap;
         numKeys = 0;
     }
 
@@ -195,8 +198,7 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
         }
 
         table = new_table;
-        new_table = null;
-        CAPACITY = next_prime;
+        capacity_used = next_prime;
 
 
     }
