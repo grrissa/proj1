@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.io.*;
+import java.lang.reflect.Array;
 public class Decompress {
     static char repeat_again = 'n';
     static String file_name = "";
@@ -16,7 +17,7 @@ public class Decompress {
         
         do {
             BufferedReader input = null;
-            if (args[0].length() > 0) {
+            if ((args != null) && (args.length > 0)) {
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
@@ -27,7 +28,7 @@ public class Decompress {
                     args[0] = ""; 
                 }
             }
-            if (args[0].length() == 0) {
+            if ((args == null) || (args.length == 0)) {
                 boolean valid_file = false;
                 
                 do {
@@ -58,7 +59,7 @@ public class Decompress {
                 output = new PrintWriter(new FileOutputStream(output_file));
                 
                 output.println("Decompression of " + file_name); 
-                output.println("Compressed from " + ); 
+                output.println("Compressed from " + file_name); 
                 output.println("Compression of " + file_name); 
                 output.println("Compression of " + file_name); 
 
@@ -86,7 +87,8 @@ public class Decompress {
     }
 
     public static void decompress(){
-        HashTableChain dic = new HashTableChain(table_size);
+        //HashTableChain dic = new HashTableChain(table_size);
+        ArrayList<String> dic = new ArrayList<String>;
         
         try {
             BufferedReader input = new BufferedReader(new FileReader(file_name));
@@ -99,8 +101,8 @@ public class Decompress {
             //initializing all possible chars 
             //dic.put(binary representation of lettter combo, char itself)
             
-            for (int i = 0; i <=1; i++) {
-                dic.put(Integer.toBinaryString(num_of_dic), Character.toString((char)num_of_dic));
+            for (int i= 32; i<=126; i++) {
+                dic.put(Integer.toBinaryString(num_of_dic), Character.toString((char)i));
                 num_of_dic++;
             }
 
