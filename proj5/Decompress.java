@@ -8,6 +8,7 @@ public class Decompress {
     static char repeat_again = 'n';
     static String file_name = "";
     static String output_file = "";
+    static String log_file = "";
     static File comp_file;
     static File og_file;
     static int table_size;
@@ -22,6 +23,8 @@ public class Decompress {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
                     og_file = new File(args[0]);
+                    String[] file_name_altered = file_name.split(".zzz");
+                    output_file = file_name_altered[0];
                 }
                 catch (FileNotFoundException e){
                     System.out.println("An invalid filename was entered when trying to run this program.");
@@ -40,11 +43,14 @@ public class Decompress {
                         input = new BufferedReader(new FileReader(file_name));
                         og_file = new File(file_name);
                         valid_file = true;
+                        String[] file_name_altered = file_name.split(".zzz");
+                        output_file = file_name_altered[0];
                     } 
 
                     // making sure file is valid before continuing
                     catch (FileNotFoundException e) {
                         System.out.println("Invalid Filename.");
+                        valid_file = false;
                     }
                 } while (valid_file = false);
             
@@ -54,9 +60,9 @@ public class Decompress {
 
             try {
                 PrintWriter output;
-                output_file = file_name + ".zzz.log";
                 
-                output = new PrintWriter(new FileOutputStream(output_file));
+                log_file = output_file + ".log";
+                output = new PrintWriter(new FileOutputStream(log_file));
                 
                 output.println("Decompression of " + file_name); 
                 output.println("Compressed from " + file_name); 
@@ -64,8 +70,10 @@ public class Decompress {
                 output.println("Compression of " + file_name); 
 
                 output.close();
+                input.close();
         
                 } // end try
+                
 
             // catching exceptions
             catch (IOException e){
@@ -85,6 +93,7 @@ public class Decompress {
 
         return table_size;
     }
+    
 
     public static void decompress(){
         ArrayList<String> dic = new ArrayList<String>();
@@ -106,11 +115,11 @@ public class Decompress {
             }
 
             String[] binary_nums = inputLine.split(" ");
-            String q = Character.toString((char)(Integer.parseInt(binary_nums[0]))); // reads the first value
-            output.print(binary_nums[0]);
+            String q = dic.get((Integer.parseInt(binary_nums[0],2))); // reads the first value
+            output.print(q);
                      
             for (int index = 1; index < binary_nums.length; index++) {
-                p = Character.toString((char)(Integer.parseInt(binary_nums[index])));
+                p = dic.get((Integer.parseInt(binary_nums[index],2)));
 
                 if (binary_nums[index] != null) {
                     output.print(p);
