@@ -125,7 +125,7 @@ public class Compress {
             
             for(int i= 32; i<=126; i++) {
                 char letter_char = (char)i;
-                dic.put(Character.toString(letter_char), Integer.toBinaryString(num_of_dic));
+                dic.put(Character.toString(letter_char), num_of_dic);
                 num_of_dic++;
             }
             
@@ -135,9 +135,9 @@ public class Compress {
                 for(int i=0; i<(inputLine.length()); i++){
                     char c = inputLine.charAt(i);
                     if(dic.get(p+c) == null){ //if p+c is not in the dictionary
-                        output.print(dic.get(p)); //print value of p to file
+                        output.print(Integer.toBinaryString((int) dic.get(p)) + " "); //print value of p to file
                         System.out.print(dic.get(p));
-                        dic.put(p+c,Integer.toBinaryString(num_of_dic)); // insert p+c into dic
+                        dic.put(p+c,num_of_dic); // insert p+c into dic
                         num_of_dic++;
                         p =""; 
                     }

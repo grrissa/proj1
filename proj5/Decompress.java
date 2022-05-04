@@ -102,14 +102,15 @@ public class Decompress {
             //dic.put(binary representation of lettter combo, char itself)
             
             for (int i= 32; i<=126; i++) {
-                dic.put(Integer.toBinaryString(num_of_dic), Character.toString((char)i));
+                dic.add(num_of_dic, Character.toString((char)i));
                 num_of_dic++;
             }
 
-            String q = Character.toString(inputLine.charAt(0));
-            output.print(dic.get(q));
+            String[] binary_nums = inputLine.split(" ");
+            String q = Character.toString((char)(Integer.parseInt(binary_nums[0])));
+            output.print(binary_nums[0]);
                      
-            for (int index = 1; index < inputLine.length(); index++) {
+            for (int index = 1; index < binary_nums.length; index++) {
                 p = Character.toString(inputLine.charAt(index));
 
                 if (dic.get(p) != null) {
