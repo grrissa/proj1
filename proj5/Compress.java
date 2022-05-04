@@ -89,7 +89,7 @@ public class Compress {
     }
     public static int table_size(long file_size){
         // in this function calculate the size of the hash map and 
-        table_size = 97;
+        table_size = 997;
         return table_size;
     }
     public static long determine_size(File file) {
@@ -125,7 +125,7 @@ public class Compress {
             
             for(int i= 32; i<=126; i++) {
                 char letter_char = (char)i;
-                dic.put(Character.toString(letter_char), num_of_dic);
+                dic.put(Character.toString(letter_char), Integer.toBinaryString(num_of_dic));
                 num_of_dic++;
             }
             
@@ -137,7 +137,7 @@ public class Compress {
                     if(dic.get(p+c) == null){ //if p+c is not in the dictionary
                         output.print(dic.get(p)); //print value of p to file
                         System.out.print(dic.get(p));
-                        dic.put(p+c,num_of_dic); // insert p+c into dic
+                        dic.put(p+c,Integer.toBinaryString(num_of_dic)); // insert p+c into dic
                         num_of_dic++;
                         p =""; 
                     }
