@@ -87,8 +87,7 @@ public class Decompress {
     }
 
     public static void decompress(){
-        //HashTableChain dic = new HashTableChain(table_size);
-        ArrayList<String> dic = new ArrayList<String>;
+        ArrayList<String> dic = new ArrayList<String>();
         
         try {
             BufferedReader input = new BufferedReader(new FileReader(file_name));
@@ -107,25 +106,34 @@ public class Decompress {
             }
 
             String[] binary_nums = inputLine.split(" ");
-            String q = Character.toString((char)(Integer.parseInt(binary_nums[0])));
+            String q = Character.toString((char)(Integer.parseInt(binary_nums[0]))); // reads the first value
             output.print(binary_nums[0]);
                      
             for (int index = 1; index < binary_nums.length; index++) {
-                p = Character.toString(inputLine.charAt(index));
+                p = Character.toString((char)(Integer.parseInt(binary_nums[index])));
 
-                if (dic.get(p) != null) {
-                    output.print(dic.get(p));
+                if (binary_nums[index] != null) {
+                    output.print(p);
+                    dic.add(num_of_dic, q + p);
                     // NEED TO DO: insert(next code, text(q)+ FC(text (p)))
 
                 } else {
+                    /*
                     output.print(dic.get(q));
                     output.print((dic.get(q)).charAt(0)); //first char of q
 
                     String value_added = dic.get(q) +  (dic.get(q)).charAt(0);
 
                     dic.put(p, value_added);
+                    */
+                    output.print(q);
+                    //output.print((dic.get(q)).charAt(0)); //first char of q
+
+                    String value_added = q +  q.charAt(0);
+
+                    dic.add(index, p+ value_added);
                 }
-                
+                q = p;
             }
 
             input.close();
