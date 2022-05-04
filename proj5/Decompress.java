@@ -6,6 +6,7 @@ import java.io.*;
 public class Decompress {
     static char repeat_again = 'n';
     static String file_name = "";
+    static String output_file = "";
     static File comp_file;
     static File og_file;
     static int table_size;
@@ -52,7 +53,7 @@ public class Decompress {
 
             try {
                 PrintWriter output;
-                String output_file = file_name + ".zzz.log";
+                output_file = file_name + ".zzz.log";
                 
                 output = new PrintWriter(new FileOutputStream(output_file));
                 
@@ -89,25 +90,41 @@ public class Decompress {
         
         try {
             BufferedReader input = new BufferedReader(new FileReader(file_name));
-            String inputLine;
+            String inputLine = input.readLine();
             int num_of_dic = 0;
             String p = "";
-            // loop that reads the infile line by line
-            //initializing all possible chars
-            for(int i= 32; i<=126; i++) {
-                char letter_char = (char)i;
-                dic.put(Character.toString(letter_char));
+            PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
+            // loop that reads the infile line by line
+            //initializing all possible chars 
+            //dic.put(binary representation of lettter combo, char itself)
+            
+            for (int i = 0; i <=1; i++) {
+                dic.put(Integer.toBinaryString(num_of_dic), Character.toString((char)num_of_dic));
+                num_of_dic++;
             }
-            while ( ((inputLine = input.readLine()) != null) ) {
-                //String<> values = inputLine.split();
-                
-                //for() {
-                    if(dic.indexOf(p)!= -1){
-                        
-                ///    }
+
+            String q = Character.toString(inputLine.charAt(0));
+            output.print(dic.get(q));
+                     
+            for (int index = 1; index < inputLine.length(); index++) {
+                p = Character.toString(inputLine.charAt(index));
+
+                if (dic.get(p) != null) {
+                    output.print(dic.get(p));
+                    // NEED TO DO: insert(next code, text(q)+ FC(text (p)))
+
+                } else {
+                    output.print(dic.get(q));
+                    output.print((dic.get(q)).charAt(0)); //first char of q
+
+                    String value_added = dic.get(q) +  (dic.get(q)).charAt(0);
+
+                    dic.put(p, value_added);
                 }
+                
             }
+
             input.close();
 
         } // end try
