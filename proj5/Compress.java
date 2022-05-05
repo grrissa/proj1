@@ -89,7 +89,7 @@ public class Compress {
     }
     public static int table_size(long file_size){
         // in this function calculate the size of the hash map and 
-        table_size = 997;
+        table_size = 97;
         return table_size;
     }
     public static long determine_size(File file) {
