@@ -1,5 +1,6 @@
 package proj5;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.io.*;
@@ -103,6 +104,7 @@ public class Decompress {
             String inputLine = input.readLine();
             int num_of_dic = 0;
             String p = "";
+            int p_numform;
             PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
             // loop that reads the infile line by line
@@ -119,12 +121,14 @@ public class Decompress {
             output.print(q);
                      
             for (int index = 1; index < binary_nums.length; index++) {
-                p = dic.get((Integer.parseInt(binary_nums[index],2)));
+                p_numform = Integer.parseInt(binary_nums[index]);
 
-                if (binary_nums[index] != null) {
+                if (p_numform < num_of_dic) {
+                    p = dic.get(p_numform);
                     output.print(p);
-                    dic.add(num_of_dic, q + p);
-                    // NEED TO DO: insert(next code, text(q)+ FC(text (p)))
+                    dic.add(num_of_dic, q + p.charAt(0));
+                    num_of_dic++;
+                    
 
                 } else {
                     /*
@@ -135,12 +139,9 @@ public class Decompress {
 
                     dic.put(p, value_added);
                     */
-                    output.print(q);
-                    //output.print((dic.get(q)).charAt(0)); //first char of q
 
-                    String value_added = q +  q.charAt(0);
-
-                    dic.add(index, p+ value_added);
+                    output.print(q +  q.charAt(0));
+                    dic.add(num_of_dic, q +  q.charAt(0));
                 }
                 q = p;
             }
