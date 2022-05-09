@@ -39,7 +39,7 @@ public class Decompress {
                     try {
                         // asks user to input file to read
                         Scanner file_input = new Scanner(System.in);
-                        System.out.println("\nPlease enter the file name that you would like to be compressed: ");
+                        System.out.println("\nPlease enter the file name that you would like to be decompressed: ");
                         file_name = file_input.nextLine();
                         input = new BufferedReader(new FileReader(file_name));
                         og_file = new File(file_name);
@@ -121,11 +121,12 @@ public class Decompress {
             output.print(q);
                      
             for (int index = 1; index < binary_nums.length; index++) {
-                p_numform = Integer.parseInt(binary_nums[index]);
+                p_numform = Integer.parseInt(binary_nums[index],2); // changes to binary to decimal #s
 
                 if (p_numform < num_of_dic) {
                     p = dic.get(p_numform);
                     output.print(p);
+                    System.out.print(p);
                     dic.add(num_of_dic, q + p.charAt(0));
                     num_of_dic++;
                     
@@ -141,12 +142,15 @@ public class Decompress {
                     */
 
                     output.print(q +  q.charAt(0));
+                    System.out.print(q +  q.charAt(0));
                     dic.add(num_of_dic, q +  q.charAt(0));
+                    num_of_dic++;
                 }
                 q = p;
             }
 
             input.close();
+            output.close();
 
         } // end try
 
