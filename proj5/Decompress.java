@@ -1,18 +1,16 @@
 package proj5;
+
+//HOW DO WE KNOW WHEN THE TABLE IS DOUBLED
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.Scanner;
 import java.io.*;
-import java.lang.reflect.Array;
 public class Decompress {
     static char repeat_again = 'n';
     static String file_name = "";
     static String output_file = "";
     static String log_file = "";
-    static File comp_file;
-    static File og_file;
     static int table_size;
+    static int double_times;
     //static HashMap<Integer,int[]> Map = new HashMap<Integer,int[]>();
     public static void main(String[] args) { //args will be the name of the file
         //base table size based off of file size... want to avoid rehashing
@@ -23,7 +21,6 @@ public class Decompress {
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
-                    og_file = new File(args[0]);
                     String[] file_name_altered = file_name.split(".zzz");
                     output_file = file_name_altered[0];
                 }
@@ -42,7 +39,6 @@ public class Decompress {
                         System.out.println("\nPlease enter the file name that you would like to be decompressed: ");
                         file_name = file_input.nextLine();
                         input = new BufferedReader(new FileReader(file_name));
-                        og_file = new File(file_name);
                         valid_file = true;
                         String[] file_name_altered = file_name.split(".zzz");
                         output_file = file_name_altered[0];
@@ -57,7 +53,9 @@ public class Decompress {
             
             }
 
+            long start_time = System.nanoTime();
             decompress();
+            long time = System.nanoTime() - start_time;
 
             try {
                 PrintWriter output;
@@ -66,9 +64,8 @@ public class Decompress {
                 output = new PrintWriter(new FileOutputStream(log_file));
                 
                 output.println("Decompression of " + file_name); 
-                output.println("Compressed from " + file_name); 
-                output.println("Compression of " + file_name); 
-                output.println("Compression of " + file_name); 
+                output.println("Decompression took " + (time/1000000000.0) + " seconds"); 
+                output.println("The table was doubled " + double_times + " times FIGURE THIS OUT"); // WHATTTTT
 
                 output.close();
                 input.close();
@@ -89,11 +86,6 @@ public class Decompress {
         } while((repeat_again!='n') && (repeat_again!='N'));
 
     }
-    public static int table_size(long file_size){
-        // in this function calculate the size of the hash map and 
-
-        return table_size;
-    }
     
 
     public static void decompress(){
@@ -107,10 +99,6 @@ public class Decompress {
             int p_numform;
             PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
 
-            // loop that reads the infile line by line
-            //initializing all possible chars 
-            //dic.put(binary representation of lettter combo, char itself)
-            
             for (int i= 32; i<=126; i++) {
                 dic.add(num_of_dic, Character.toString((char)i));
                 num_of_dic++;
@@ -123,7 +111,7 @@ public class Decompress {
             for (int index = 1; index < binary_nums.length; index++) {
                 p_numform = Integer.parseInt(binary_nums[index],2); // changes to binary to decimal #s
 
-                if (p_numform < num_of_dic) {
+                if (p_numform <= num_of_dic) {
                     p = dic.get(p_numform);
                     output.print(p);
                     System.out.print(p);
@@ -132,15 +120,6 @@ public class Decompress {
                     
 
                 } else {
-                    /*
-                    output.print(dic.get(q));
-                    output.print((dic.get(q)).charAt(0)); //first char of q
-
-                    String value_added = dic.get(q) +  (dic.get(q)).charAt(0);
-
-                    dic.put(p, value_added);
-                    */
-
                     output.print(q +  q.charAt(0));
                     System.out.print(q +  q.charAt(0));
                     dic.add(num_of_dic, q +  q.charAt(0));
@@ -169,7 +148,6 @@ public class Decompress {
         /*
         Asks user if they would like to run the program again or not
         */
-        //asks the user whether they would like to run the program again
         Scanner again = new Scanner(System.in);
         System.out.println("\nDo you want to run the program again (y for yes and n for no)?");
         repeat_again = again.next().charAt(0);

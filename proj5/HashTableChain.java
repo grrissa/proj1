@@ -37,7 +37,7 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
 
     private LinkedList<Entry<k,v>>[] table; // array of linked lists
     private int numKeys;
-    private static final int CAPACITY = 101;
+    private static final int CAPACITY = 149;
     private static int capacity_used;
     private static final double LOAD_THRESHOLD = 0.75; //tbd? i found num this on the internet
     private int num_rehash = 0;

@@ -8,7 +8,6 @@ public class Compress {
     static char repeat_again = 'n';
     static String file_name = "";
     static File comp_file;
-    static File og_file;
     static String output_file;
     static int table_size;
     static long time = 0;
@@ -24,7 +23,6 @@ public class Compress {
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
-                    og_file = new File(args[0]);
                 }
                 catch (FileNotFoundException e){
                     System.out.println("An invalid filename was entered when trying to run this program.");
@@ -41,7 +39,7 @@ public class Compress {
                         System.out.println("\nPlease enter the file name that you would like to be compressed: ");
                         file_name = file_input.nextLine();
                         input = new BufferedReader(new FileReader(file_name));
-                        og_file = new File(file_name);
+                        
                         valid_file = true;
                     } 
 
@@ -50,14 +48,22 @@ public class Compress {
                         System.out.println("Invalid Filename.");
                         valid_file = false;
                     }
-                } while (valid_file = false);
+                } while (valid_file == false);
             
             }
-            long og_size = determine_size(og_file);
+            File og_file = new File(file_name);
+            long og_size = og_file.length();
+            //long og_size = determine_size(og_file);
             table_size = table_size(og_size);
             output_file= file_name + ".zzz";
             comp_file = new File(output_file);
+
+            long start_time = System.nanoTime();
             compress(input);
+            time = System.nanoTime() - start_time;
+
+            long comp_size = comp_file.length();
+
             try {
                 PrintWriter output;
                 String output_file = file_name + ".zzz.log";
@@ -65,8 +71,11 @@ public class Compress {
                 output = new PrintWriter(new FileOutputStream(output_file));
                 
                 output.println("Compression of " + file_name); 
-                output.println("Compressed from " + og_size + " Kilobytes to " + determine_size(comp_file)+" Kilobytes"); 
-                output.println("Compression took " + time + " seconds"); 
+                if ((og_size < 1000) && (comp_size < 1000)){
+                    output.println("Compressed from " + og_size + " bytes to " + comp_size +" bytes"); }
+                else {
+                    output.println("Compressed from " + og_size/1000.0 + " Kilobytes to " + comp_size/1000.0 +" Kilobytes"); }
+                output.println("Compression took " + (time/1000000000.0) + " seconds"); 
                 output.println("The dictionary contains " + num_entries + " total entries"); 
                 output.println("The table was rehashed " + rehash_num + " times"); 
 
@@ -89,14 +98,22 @@ public class Compress {
     }
     public static int table_size(long file_size){
         // in this function calculate the size of the hash map and 
-        table_size = 97;
+        if (file_size < 100) {
+            table_size = 149;}
+        else if (file_size < 200) {
+            table_size = 331;}
+        else if (file_size < 650) {
+            table_size = 733;}
+        else if (file_size < 850) {
+            table_size = 953;}
+        else if (file_size < 1250) {
+            table_size = 1049;}
+        else{
+            table_size = 733;
+        }
         return table_size;
     }
-    public static long determine_size(File file) {
-        long size = file.length(); // size in bytes
-        size = size / 1000; // convert to kilobytes
-        return size;
-    }
+
     public static void compress(BufferedReader original) {
     /*
     compression algorithm:
@@ -133,14 +150,22 @@ public class Compress {
             while ( ((inputLine = original.readLine()) != null) ) {
                 
                 for(int i=0; i<(inputLine.length()); i++){
-                    char c = inputLine.charAt(i);
+                    String c = Character.toString(inputLine.charAt(i));
+                    System.out.print(c);
+                    if((i == inputLine.length()-1) && (dic.get(p+c) != null)){
+                        output.print(Integer.toBinaryString((int) dic.get(p+c))); //print value of p to file
+                    }
                     if(dic.get(p+c) == null){ //if p+c is not in the dictionary
                         output.print(Integer.toBinaryString((int) dic.get(p)) + " "); //print value of p to file
-                        System.out.print(dic.get(p));
                         dic.put(p+c,num_of_dic); // insert p+c into dic
                         num_of_dic++;
                         p =""; 
+                        if(i == inputLine.length()-1){
+                            output.print(Integer.toBinaryString((int) dic.get(c)));
+                        }
                     }
+
+                    
                     p += c;
                 }
         }
