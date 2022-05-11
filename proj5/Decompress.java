@@ -11,6 +11,8 @@ public class Decompress {
     static String log_file = "";
     static int table_size;
     static int double_times;
+    static ObjectInputStream input;
+    static PrintWriter output;
     //static HashMap<Integer,int[]> Map = new HashMap<Integer,int[]>();
     public static void main(String[] args) { //args will be the name of the file
         //base table size based off of file size... want to avoid rehashing
@@ -128,13 +130,14 @@ public class Decompress {
                 }
                 q = p;
             }*/
+            
             try {
                 
-                ObjectInputStream input = new ObjectInputStream(new FileInputStream(file_name));
+                input = new ObjectInputStream(new FileInputStream(file_name));
                 int num_of_dic = 0;
                 String p = "";
                 int p_numform;
-                PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
+                output = new PrintWriter(new FileOutputStream(output_file));
     
                 for (int i= 32; i<=126; i++) {
                     dic.add(num_of_dic, Character.toString((char)i));
@@ -147,7 +150,7 @@ public class Decompress {
                          
                 while((Integer)(p_numform = input.readInt()) != null) {
                         
-                    if (p_numform <= num_of_dic) {
+                    if (p_numform < num_of_dic) {
                         p = dic.get(p_numform);
                         output.print(p);
                         System.out.print(p);
@@ -162,15 +165,21 @@ public class Decompress {
                     }
                     q = p;
                 }
-            input.close();
-            output.close();
+
 
         } // end try
 
 
         catch (IOException e){
-            System.out.println(e.getMessage());
-            System.exit(1); //IO error, exit program
+            //System.out.println(e.getMessage());
+            try {
+                input.close();
+                output.close();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                //e1.printStackTrace();
+            }
+            
         } // end catch
         catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
