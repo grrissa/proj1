@@ -4,7 +4,6 @@ Brief Summary: Program compresses the file using a chained hash table
 Last Date Modified: 5/11/2022
 *************************************************************************************/
 
-
 import java.util.Scanner;
 import java.io.*;
 
@@ -17,13 +16,11 @@ public class Compress {
     static long time = 0;
     static int rehash_num;
     static int num_entries;
-    //static HashMap<Integer,int[]> Map = new HashMap<Integer,int[]>();
     public static void main(String[] args) { //args will be the name of the file
-        //base table size based off of file size... want to avoid rehashing
         
         do {
             BufferedReader input = null;
-            if ((args != null) && (args.length > 0)) {
+            if ((args != null) && (args.length > 0)) { //checks filename if given when run 
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
@@ -33,7 +30,7 @@ public class Compress {
                     args[0] = ""; 
                 }
             }
-            if ((args == null) || (args.length == 0)) {
+            if ((args == null) || (args.length == 0)) { //if file name is not given or if the file is incorrect it goes here
                 boolean valid_file = false;
                 
                 do {
@@ -55,13 +52,14 @@ public class Compress {
                 } while (valid_file == false);
             
             }
+            // creates file names and checks sizes
             File og_file = new File(file_name);
             long og_size = og_file.length();
-            //long og_size = determine_size(og_file);
             table_size = table_size(og_size);
             output_file= file_name + ".zzz";
             comp_file = new File(output_file);
 
+            // runs compress function and records the time
             long start_time = System.nanoTime();
             compress(input);
             time = System.nanoTime() - start_time;
@@ -69,6 +67,7 @@ public class Compress {
             long comp_size = comp_file.length();
 
             try {
+                //prints log file
                 PrintWriter output;
                 String output_file = file_name + ".zzz.log";
                 
@@ -101,7 +100,9 @@ public class Compress {
 
     }
     public static int table_size(long file_size){
-        // in this function calculate the size of the hash map and 
+        /*
+        determines the size of the table according to the input file size
+        */
         if (file_size < 100) {
             table_size = 149;}
         else if (file_size < 200) {
@@ -163,17 +164,14 @@ public class Compress {
                     String c = Character.toString(inputLine.charAt(i));
                     System.out.print(c);
                     if((i == inputLine.length()-1) && (dic.get(p+c) != null)){
-                        //output.print(Integer.toBinaryString((int) dic.get(p+c))); //print value of p to file
                         output.writeInt((int) dic.get(p+c));
                     }
                     if(dic.get(p+c) == null){ //if p+c is not in the dictionary
-                        //output.print(Integer.toBinaryString((int) dic.get(p)) + " "); //print value of p to file
                         output.writeInt((int) dic.get(p));
                         dic.put(p+c,num_of_dic); // insert p+c into dic
                         num_of_dic++;
                         p =""; 
                         if(i == inputLine.length()-1){
-                            //output.print(Integer.toBinaryString((int) dic.get(c)));
                             output.writeInt((int) dic.get(c));
                         }
                     }
