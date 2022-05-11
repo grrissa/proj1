@@ -1,6 +1,10 @@
 package proj5;
 
-//HOW DO WE KNOW WHEN THE TABLE IS DOUBLED
+/*************************************************************************************
+Brief Summary: Program decompresses the compressed file using perfect hashing
+Last Date Modified: 5/11/2022
+*************************************************************************************/
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
@@ -13,13 +17,11 @@ public class Decompress {
     static int double_times;
     static ObjectInputStream input;
     static PrintWriter output;
-    //static HashMap<Integer,int[]> Map = new HashMap<Integer,int[]>();
     public static void main(String[] args) { //args will be the name of the file
-        //base table size based off of file size... want to avoid rehashing
         
         do {
             BufferedReader input = null;
-            if ((args != null) && (args.length > 0)) {
+            if ((args != null) && (args.length > 0)) { //if the user inputs a file
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
@@ -31,7 +33,7 @@ public class Decompress {
                     args[0] = ""; 
                 }
             }
-            if ((args == null) || (args.length == 0)) {
+            if ((args == null) || (args.length == 0)) { //if file name is not given or if the file is incorrect it goes here
                 boolean valid_file = false;
                 
                 do {
@@ -55,11 +57,12 @@ public class Decompress {
             
             }
 
+            //runs decompress algorithm and checks time
             long start_time = System.nanoTime();
             decompress();
             long time = System.nanoTime() - start_time;
 
-            try {
+            try { // creates log file
                 PrintWriter output;
                 
                 log_file = output_file + ".log";
@@ -91,45 +94,10 @@ public class Decompress {
     
 
     public static void decompress(){
-        ArrayList<String> dic = new ArrayList<String>();
         /*
-        try {
-            //BufferedReader input = new BufferedReader(new FileReader(file_name));
-            ObjectInputStream input = new ObjectInputStream(new FileInputStream(file_name));
-            String inputLine = input.readLine();
-            int num_of_dic = 0;
-            String p = "";
-            int p_numform;
-            PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
-
-            for (int i= 32; i<=126; i++) {
-                dic.add(num_of_dic, Character.toString((char)i));
-                num_of_dic++;
-            }
-
-            String[] binary_nums = inputLine.split(" ");
-            String q = dic.get((Integer.parseInt(binary_nums[0],2))); // reads the first value
-            output.print(q);
-                     
-            for (int index = 1; index < binary_nums.length; index++) {
-                p_numform = Integer.parseInt(binary_nums[index],2); // changes to binary to decimal #s
-
-                if (p_numform <= num_of_dic) {
-                    p = dic.get(p_numform);
-                    output.print(p);
-                    System.out.print(p);
-                    dic.add(num_of_dic, q + p.charAt(0));
-                    num_of_dic++;
-                    
-
-                } else {
-                    output.print(q +  q.charAt(0));
-                    System.out.print(q +  q.charAt(0));
-                    dic.add(num_of_dic, q +  q.charAt(0));
-                    num_of_dic++;
-                }
-                q = p;
-            }*/
+        decompresses the file using perfect hashing
+        */
+        ArrayList<String> dic = new ArrayList<String>();
             
             try {
                 
@@ -177,13 +145,11 @@ public class Decompress {
 
 
         catch (IOException e){
-            //System.out.println(e.getMessage());
-            try {
+            try { // closes file when the end of the input file is reached
                 input.close();
                 output.close();
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                //e1.printStackTrace();
+                System.out.println(e1.getMessage());
             }
             
         } // end catch
