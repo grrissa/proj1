@@ -147,9 +147,8 @@ public class Decompress {
                 String q = dic.get(hi); // reads the first value
                 output.print(q);
                          
-                while(true) {
-                    p_numform = input.readInt(); // changes to binary to decimal #s
-    
+                while((Integer)(p_numform = input.readInt()) != null) {
+                        
                     if (p_numform <= num_of_dic) {
                         p = dic.get(p_numform);
                         output.print(p);
