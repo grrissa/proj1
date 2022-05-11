@@ -49,7 +49,7 @@ public class Decompress {
                         System.out.println("Invalid Filename.");
                         valid_file = false;
                     }
-                } while (valid_file = false);
+                } while (valid_file == false);
             
             }
 
@@ -90,9 +90,10 @@ public class Decompress {
 
     public static void decompress(){
         ArrayList<String> dic = new ArrayList<String>();
-        
+        /*
         try {
-            BufferedReader input = new BufferedReader(new FileReader(file_name));
+            //BufferedReader input = new BufferedReader(new FileReader(file_name));
+            ObjectInputStream input = new ObjectInputStream(new FileInputStream(file_name));
             String inputLine = input.readLine();
             int num_of_dic = 0;
             String p = "";
@@ -126,10 +127,49 @@ public class Decompress {
                     num_of_dic++;
                 }
                 q = p;
-            }
+            }*/
+            try {
+                
+                ObjectInputStream input = new ObjectInputStream(new FileInputStream(file_name));
+                String inputLine = input.readLine();
+                int num_of_dic = 0;
+                String p = "";
+                int p_numform;
+                PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
+    
+                for (int i= 32; i<=126; i++) {
+                    dic.add(num_of_dic, Character.toString((char)i));
+                    num_of_dic++;
+                }
+    
+                //String[] binary_nums = inputLine.split(" ");
+                int hi = input.readInt();
+                String q = dic.get(hi); // reads the first value
+                output.print(q);
+                         
+                while(true) {
+                    p_numform = input.readInt(); // changes to binary to decimal #s
+    
+                    if (p_numform <= num_of_dic) {
+                        p = dic.get(p_numform);
+                        output.print(p);
+                        System.out.print(p);
+                        dic.add(num_of_dic, q + p.charAt(0));
+                        num_of_dic++;
+                        
+    
+                    } else {
+                        output.print(q +  q.charAt(0));
+                        System.out.print(q +  q.charAt(0));
+                        dic.add(num_of_dic, q +  q.charAt(0));
+                        num_of_dic++;
+                    }
+                    q = p;
+                }
+            
 
-            input.close();
-            output.close();
+            //input.close();
+            //output.close();
 
         } // end try
 

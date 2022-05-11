@@ -136,7 +136,7 @@ public class Compress {
             int num_of_dic = 0;
             String to_add;
             String p = "";
-            PrintWriter output = new PrintWriter(new FileOutputStream(output_file));
+            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(output_file));
 
             //initializing all possible chars
             
@@ -153,15 +153,18 @@ public class Compress {
                     String c = Character.toString(inputLine.charAt(i));
                     System.out.print(c);
                     if((i == inputLine.length()-1) && (dic.get(p+c) != null)){
-                        output.print(Integer.toBinaryString((int) dic.get(p+c))); //print value of p to file
+                        //output.print(Integer.toBinaryString((int) dic.get(p+c))); //print value of p to file
+                        output.writeInt((int) dic.get(p+c));
                     }
                     if(dic.get(p+c) == null){ //if p+c is not in the dictionary
-                        output.print(Integer.toBinaryString((int) dic.get(p)) + " "); //print value of p to file
+                        //output.print(Integer.toBinaryString((int) dic.get(p)) + " "); //print value of p to file
+                        output.writeInt((int) dic.get(p));
                         dic.put(p+c,num_of_dic); // insert p+c into dic
                         num_of_dic++;
                         p =""; 
                         if(i == inputLine.length()-1){
-                            output.print(Integer.toBinaryString((int) dic.get(c)));
+                            //output.print(Integer.toBinaryString((int) dic.get(c)));
+                            output.writeInt((int) dic.get(c));
                         }
                     }
 
