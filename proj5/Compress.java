@@ -77,7 +77,7 @@ public class Compress {
                     output.println("Compressed from " + og_size/1000.0 + " Kilobytes to " + comp_size/1000.0 +" Kilobytes"); }
                 output.println("Compression took " + (time/1000000000.0) + " seconds"); 
                 output.println("The dictionary contains " + num_entries + " total entries"); 
-                output.println("The table was rehashed " + rehash_num + " times"); 
+                output.println("The table was rehashed " + rehash_num + " times ADD NEW LINE CHARACTER AND /T and other one!!!!"); 
 
                 output.close();
         
@@ -167,8 +167,6 @@ public class Compress {
                             output.writeInt((int) dic.get(c));
                         }
                     }
-
-                    
                     p += c;
                 }
         }
