@@ -131,7 +131,6 @@ public class Decompress {
             try {
                 
                 ObjectInputStream input = new ObjectInputStream(new FileInputStream(file_name));
-                String inputLine = input.readLine();
                 int num_of_dic = 0;
                 String p = "";
                 int p_numform;
@@ -142,7 +141,6 @@ public class Decompress {
                     num_of_dic++;
                 }
     
-                //String[] binary_nums = inputLine.split(" ");
                 int hi = (Integer)input.readInt();
                 String q = dic.get(hi); // reads the first value
                 output.print(q);
