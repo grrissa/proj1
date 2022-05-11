@@ -70,7 +70,7 @@ public class Decompress {
                 
                 output.println("Decompression of " + file_name); 
                 output.println("Decompression took " + (time/1000000000.0) + " seconds"); 
-                output.println("The table was doubled " + double_times + " times FIGURE THIS OUT"); // WHATTTTT
+                output.println("The table was doubled " + double_times + " times");
 
                 output.close();
                 input.close();
@@ -111,13 +111,21 @@ public class Decompress {
                     dic.add(num_of_dic, Character.toString((char)i));
                     num_of_dic++;
                 }
+                /*
                 dic.add(num_of_dic, Character.toString((char)13));
                 num_of_dic++;
                 dic.add(num_of_dic, Character.toString((char)10));
                 num_of_dic++;
                 dic.add(num_of_dic, Character.toString((char)9));
                 num_of_dic++;
-    
+*/
+                dic.add(num_of_dic, "\n");
+                num_of_dic++;
+                dic.add(num_of_dic, "\t");
+                num_of_dic++;
+                dic.add(num_of_dic, "\r");
+                num_of_dic++;
+        
                 int hi = (Integer)input.readInt();
                 String q = dic.get(hi); // reads the first value
                 output.print(q);
