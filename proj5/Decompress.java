@@ -143,7 +143,7 @@ public class Decompress {
                 }
     
                 //String[] binary_nums = inputLine.split(" ");
-                int hi = input.readInt();
+                int hi = (Integer)input.readInt();
                 String q = dic.get(hi); // reads the first value
                 output.print(q);
                          
