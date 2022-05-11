@@ -143,11 +143,11 @@ public class Decompress {
                     dic.add(num_of_dic, Character.toString((char)i));
                     num_of_dic++;
                 }
-                dic.add(num_of_dic, "\r");
+                dic.add(num_of_dic, Character.toString((char)13));
                 num_of_dic++;
-                dic.add(num_of_dic, "\n");
+                dic.add(num_of_dic, Character.toString((char)10));
                 num_of_dic++;
-                dic.add(num_of_dic, "\t");
+                dic.add(num_of_dic, Character.toString((char)9));
                 num_of_dic++;
     
                 int hi = (Integer)input.readInt();

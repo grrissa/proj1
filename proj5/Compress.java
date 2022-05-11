@@ -146,11 +146,11 @@ public class Compress {
                 num_of_dic++;
             }
             
-            dic.put("\r", num_of_dic);
+            dic.put(Character.toString((char)13), num_of_dic);
             num_of_dic++;
-            dic.put("\n", num_of_dic);
+            dic.put(Character.toString((char)10), num_of_dic);
             num_of_dic++;
-            dic.put("\t", num_of_dic);
+            dic.put(Character.toString((char)9), num_of_dic);
             num_of_dic++;
 
             while ( ((inputLine = original.readLine()) != null) ) {
