@@ -154,8 +154,7 @@ public class Decompress {
                         output.print(p);
                         System.out.print(p);
                         dic.add(num_of_dic, q + p.charAt(0));
-                        num_of_dic++;
-                        
+                        num_of_dic++;    
     
                     } else {
                         output.print(q +  q.charAt(0));
@@ -165,10 +164,8 @@ public class Decompress {
                     }
                     q = p;
                 }
-            
-
-            //input.close();
-            //output.close();
+            input.close();
+            output.close();
 
         } // end try
 
