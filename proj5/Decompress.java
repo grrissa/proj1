@@ -1,6 +1,10 @@
 package proj5;
 
-//HOW DO WE KNOW WHEN THE TABLE IS DOUBLED
+/*************************************************************************************
+Brief Summary: Program decompresses the compressed file using perfect hashing
+Last Date Modified: 5/11/2022
+*************************************************************************************/
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;

@@ -1,4 +1,8 @@
 package proj5;
+/*************************************************************************************
+Brief Summary: program creates the KWHashMap interface
+Last Date Modified: 5/11/2022
+*************************************************************************************/
 
 public interface KWHashMap<k,v> {
     public v get(Object key);

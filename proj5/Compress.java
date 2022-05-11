@@ -1,6 +1,10 @@
 package proj5;
+/*************************************************************************************
+Brief Summary: Program compresses the file using a chained hash table
+Last Date Modified: 5/11/2022
+*************************************************************************************/
 
-import java.util.HashMap;
+
 import java.util.Scanner;
 import java.io.*;
 

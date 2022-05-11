@@ -1,9 +1,10 @@
 package proj5;
+/*************************************************************************************
+Brief Summary: Program creates the linked hash map that will be used for compress
+Last Date Modified: 5/11/2022
+*************************************************************************************/
 
-import java.util.*;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public class HashTableChain<k,v> implements KWHashMap<k,v>{
 
