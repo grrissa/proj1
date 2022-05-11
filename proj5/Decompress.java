@@ -143,6 +143,12 @@ public class Decompress {
                     dic.add(num_of_dic, Character.toString((char)i));
                     num_of_dic++;
                 }
+                dic.add(num_of_dic, "/r");
+                num_of_dic++;
+                dic.add(num_of_dic, "/n");
+                num_of_dic++;
+                dic.add(num_of_dic, "/t");
+                num_of_dic++;
     
                 int hi = (Integer)input.readInt();
                 String q = dic.get(hi); // reads the first value
