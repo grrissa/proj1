@@ -17,9 +17,10 @@ public class Compress {
     static int rehash_num;
     static int num_entries;
     public static void main(String[] args) { //args will be the name of the file
-        
+        int incorrect_tries = 0;
         do {
             BufferedReader input = null;
+            
             if ((args != null) && (args.length > 0)) { //checks filename if given when run 
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
@@ -46,7 +47,11 @@ public class Compress {
 
                     // making sure file is valid before continuing
                     catch (FileNotFoundException e) {
-                        System.out.println("Invalid Filename.");
+                        System.out.println("Invalid Filename. You have "+ (3 - incorrect_tries)+" more tries to enter a correct file name");
+                        incorrect_tries++;
+                        if (incorrect_tries > 3) {
+                            System.exit(1);
+                        }
                         valid_file = false;
                     }
                 } while (valid_file == false);
@@ -80,7 +85,7 @@ public class Compress {
                     output.println("Compressed from " + og_size/1000.0 + " Kilobytes to " + comp_size/1000.0 +" Kilobytes"); }
                 output.println("Compression took " + (time/1000000000.0) + " seconds"); 
                 output.println("The dictionary contains " + num_entries + " total entries"); 
-                output.println("The table was rehashed " + rehash_num + " times ADD NEW LINE CHARACTER AND /T and other one!!!!"); 
+                output.println("The table was rehashed " + rehash_num + " times"); 
 
                 output.close();
         
@@ -99,6 +104,39 @@ public class Compress {
         } while((repeat_again!='n') && (repeat_again!='N'));
 
     }
+
+    public static boolean isPrime(int n){
+
+        if (n <= 1) return false;
+        if (n <= 3) return true;
+         
+        if (n % 2 == 0 || n % 3 == 0) return false;
+         
+        for (int i = 5; i * i <= n; i = i + 6)
+            if (n % i == 0 || n % (i + 2) == 0)
+            return false;
+         
+        return true;
+    }
+
+    public static int nextPrime(int N) {
+    
+        if (N <= 1)
+            return 2;
+     
+        int prime = N;
+        boolean found = false;
+
+        while (!found){
+            prime++;
+     
+            if (isPrime(prime))
+                found = true;
+        }
+        
+        return prime;
+    }
+
     public static int table_size(long file_size){
         /*
         determines the size of the table according to the input file size
@@ -114,7 +152,7 @@ public class Compress {
         else if (file_size < 1250) {
             table_size = 1049;}
         else{
-            table_size = 733;
+            table_size = nextPrime((int)file_size);
         }
         return table_size;
     }
@@ -135,11 +173,7 @@ public class Compress {
         try {
 
             // loop that reads the infile line by line
-            String inputLine;
-            int index_on = 0;
-            int ahead = 0;
             int num_of_dic = 0;
-            String to_add;
             String p = "";
             ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(output_file));
 
