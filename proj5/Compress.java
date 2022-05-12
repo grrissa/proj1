@@ -150,40 +150,27 @@ public class Compress {
                 dic.put(Character.toString(letter_char), num_of_dic);
                 num_of_dic++;
             }
-            /*
-            dic.put(Character.toString((char)13), num_of_dic);
-            num_of_dic++;
-            dic.put(Character.toString((char)10), num_of_dic);
-            num_of_dic++;
-            dic.put(Character.toString((char)9), num_of_dic);
-            num_of_dic++;
-            */
+
             dic.put("\n", num_of_dic);
             num_of_dic++;
             dic.put("\t", num_of_dic);
             num_of_dic++;
             dic.put("\r", num_of_dic);
             num_of_dic++;
-            while ( ((inputLine = original.readLine()) != null) ) {
-                
-                for(int i=0; i<(inputLine.length()); i++){
-                    String c = Character.toString(inputLine.charAt(i));
-                    System.out.print(c);
-                    if((i == inputLine.length()-1) && (dic.get(p+c) != null)){
-                        output.writeInt((int) dic.get(p+c));
-                    }
-                    if(dic.get(p+c) == null){ //if p+c is not in the dictionary
-                        output.writeInt((int) dic.get(p));
-                        dic.put(p+c,num_of_dic); // insert p+c into dic
-                        num_of_dic++;
-                        p =""; 
-                        if(i == inputLine.length()-1){
-                            output.writeInt((int) dic.get(c));
-                        }
-                    }
-                    p += c;
+            
+            int in = 0;
+            while ( (in = original.read()) != -1 ) {
+                    
+                String c = Character.toString((char)in);
+
+                if(dic.get(p+c) == null){ //if p+c is not in the dictionary
+                    output.writeInt((int) dic.get(p));
+                    dic.put(p+c,num_of_dic); // insert p+c into dic
+                    num_of_dic++;
+                    p =""; 
                 }
-        }
+                p += c;
+            }
             output.close();
             original.close();
 
