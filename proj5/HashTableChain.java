@@ -9,69 +9,102 @@ import java.util.LinkedList;
 public class HashTableChain<k,v> implements KWHashMap<k,v>{
 
     public static class Entry<k,v> {
-        private final k key; //final can't be changed
+
+        //initializes instance variables
+        private final k key;
         private v value;
 
         public Entry(k key, v value) {
+        /*
+        A constructor that sets the key and value instance variables to the set paramters
+        */
             this.key = key;
             this.value = value;
         }
 
         public k getKey() {
+        /*
+        accesor method that returns the key
+        */
             return key;
         }
 
         public v getValue() {
+        /*
+        accesor method that returns the value
+        */
             return value;
         }
 
         public v setValue(v val) {
+        /*
+        modifier method that changes the value
+        */
             v oldVal = value;
             value = val;
             return oldVal;
         }
 
         public String toString() {
+        /*
+        Displays a string representation of the entry object
+        */
             return key.toString() + " = "+ value.toString();
         }
     }
 
+    
     private LinkedList<Entry<k,v>>[] table; // array of linked lists
     private int numKeys;
     private static final int CAPACITY = 149;
     private static int capacity_used;
-    private static final double LOAD_THRESHOLD = 0.75; //tbd? i found num this on the internet
+    private static final double LOAD_THRESHOLD = 0.75; 
     private int num_rehash = 0;
-    //may need more
 
-    public HashTableChain() {// CONSTRUCTOR
+
+    public HashTableChain() {
+    /*
+        default constructor method that creates a new hash table to default size
+    */
         table = new LinkedList[CAPACITY];
         capacity_used = CAPACITY;
         numKeys = 0;
     }
 
     public HashTableChain(int cap) {
+    /*
+        constructor method that creates a new hash table to a set size
+    */
         table = new LinkedList[cap];
         capacity_used = cap;
         numKeys = 0;
     }
 
     public boolean isEmpty(){
+    /*
+        method that returns whether the hash table is empty or not
+    */
         return numKeys==0;
     }
 
     public int size(){
+    /*
+        method that returns the amount of items in the hash table
+    */
         return numKeys;
     }
 
     public int number_rehash(){
+    /*
+        method that returns the amount of times that the hash table has rehashed
+    */
         return num_rehash;
     }
 
     public v get(Object key){
-        /*
-        Uses the object key to search and return for the value that is associated with the key
-        */
+    /*
+    Uses the object key to search and return for the value that is associated with the key
+    */
         int index = key.hashCode() % table.length;
         if (index < 0){
             index += table.length;
@@ -88,10 +121,10 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
     }
 
     public v put(k key, v value){
-        /*
-        (key, val) pair is inserted into the table and numKeys incremented. If key
-        is already in table, value changed to value in param.
-        */
+    /*
+    (key, val) pair is inserted into the table and numKeys incremented. If key
+    is already in table, value changed to value in param.
+    */
 
         int index = key.hashCode() % table.length;
         if (index < 0){
@@ -116,9 +149,9 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
     }
 
     public v remove(Object key){
-        /*
-        Will remove (key, val) entry pair from the table
-        */
+    /*
+    Will remove (key, val) entry pair from the table
+    */
         int index = key.hashCode() % table.length;
         if (index < 0){
             index += table.length;
@@ -145,6 +178,9 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
     }
 
     public static boolean isPrime(int n){
+    /*
+        method that returns whether the number is a prime number or not
+    */
 
         if (n <= 1) return false;
         if (n <= 3) return true;
@@ -159,6 +195,9 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
     }
      
     public static int nextPrime(int N) {
+    /*
+        method that returns the next prime integer
+    */
     
         if (N <= 1)
             return 2;
@@ -177,6 +216,10 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
     }
      
     public void rehash() {
+    /*
+        method that creates a new array of linked lists that is double the size of the old one.  
+        Will create a new hashcode for each entry in the old array and place it into the new one.
+    */
         num_rehash++;
         int next_prime = nextPrime(capacity_used*2);
         LinkedList<Entry<k,v>>[] new_table = new LinkedList[next_prime];

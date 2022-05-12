@@ -107,18 +107,11 @@ public class Decompress {
                 int p_numform;
                 output = new PrintWriter(new FileOutputStream(output_file));
     
+                //initializes dictionary
                 for (int i= 32; i<=126; i++) {
                     dic.add(num_of_dic, Character.toString((char)i));
                     num_of_dic++;
                 }
-                /*
-                dic.add(num_of_dic, Character.toString((char)13));
-                num_of_dic++;
-                dic.add(num_of_dic, Character.toString((char)10));
-                num_of_dic++;
-                dic.add(num_of_dic, Character.toString((char)9));
-                num_of_dic++;
-*/
                 dic.add(num_of_dic, "\n");
                 num_of_dic++;
                 dic.add(num_of_dic, "\t");
@@ -126,19 +119,22 @@ public class Decompress {
                 dic.add(num_of_dic, "\r");
                 num_of_dic++;
         
+                //reads first value and primes the loop by initializing q
                 int hi = (Integer)input.readInt();
                 String q = dic.get(hi); // reads the first value
                 output.print(q);
                          
+                //loops through the remaining binary file to decompess the file back into ascii
                 while((Integer)(p_numform = input.readInt()) != null) {
                         
+                    //if code is in dictionary already
                     if (p_numform < num_of_dic) {
                         p = dic.get(p_numform);
                         output.print(p);
-                        System.out.print(p);
                         dic.add(num_of_dic, q + p.charAt(0));
                         num_of_dic++;    
-    
+                    
+                    //if code is not in dictionary
                     } else {
                         output.print(q +  q.charAt(0));
                         System.out.print(q +  q.charAt(0));
