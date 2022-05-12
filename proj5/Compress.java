@@ -28,10 +28,10 @@ public class Compress {
                 }
                 catch (FileNotFoundException e){
                     System.out.println("An invalid filename was entered when trying to run this program.");
-                    args[0] = ""; 
+                    args[0] = null; 
                 }
             }
-            if ((args == null) || (args.length == 0)) { //if file name is not given or if the file is incorrect it goes here
+            if ((args[0] == null) || (args.length == 0)) { //if file name is not given or if the file is incorrect it goes here
                 boolean valid_file = false;
                 
                 do {
