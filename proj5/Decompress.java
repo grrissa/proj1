@@ -16,12 +16,13 @@ public class Decompress {
     static int table_size;
     static int double_times;
     static ObjectInputStream input;
+    static boolean go_through = false;
     static PrintWriter output;
     public static void main(String[] args) { //args will be the name of the file
         
         do {
             BufferedReader input = null;
-            if ((args != null) && (args.length > 0)) { //if the user inputs a file
+            if ((!go_through) && (args != null) && (args.length > 0)) { //if the user inputs a file
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
@@ -33,7 +34,7 @@ public class Decompress {
                     args[0] = null; 
                 }
             }
-            if ((args[0] == null) || (args.length == 0)) { //if file name is not given or if the file is incorrect it goes here
+            if ((go_through) || (args[0] == null) || (args.length == 0)) { //if file name is not given or if the file is incorrect it goes here
                 boolean valid_file = false;
                 
                 do {
@@ -87,6 +88,7 @@ public class Decompress {
                 System.out.println(e.getMessage());
                 System.exit(1);
             }
+            go_through = true;
             repeat_validation();
         } while((repeat_again!='n') && (repeat_again!='N'));
 

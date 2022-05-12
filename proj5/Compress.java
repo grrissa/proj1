@@ -16,12 +16,14 @@ public class Compress {
     static long time = 0;
     static int rehash_num;
     static int num_entries;
+    static boolean go_through = false;
     public static void main(String[] args) { //args will be the name of the file
         int incorrect_tries = 0;
+        
         do {
             BufferedReader input = null;
             
-            if ((args != null) && (args.length > 0)) { //checks filename if given when run 
+            if ((args != null) && (args.length > 0) && (!go_through)) { //checks filename if given when run 
                 try {
                     input = new BufferedReader(new FileReader(args[0]));
                     file_name = args[0];
@@ -101,6 +103,7 @@ public class Compress {
                 System.out.println(e.getMessage());
                 System.exit(1);
             }
+            go_through = true;
             repeat_validation();
         } while((repeat_again!='n') && (repeat_again!='N'));
 
