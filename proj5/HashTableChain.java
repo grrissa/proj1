@@ -211,7 +211,6 @@ public class HashTableChain<k,v> implements KWHashMap<k,v>{
             if (isPrime(prime))
                 found = true;
         }
-        System.out.print(prime);
         return prime;
     }
      

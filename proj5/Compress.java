@@ -43,6 +43,7 @@ public class Compress {
                         input = new BufferedReader(new FileReader(file_name));
                         
                         valid_file = true;
+                        incorrect_tries = 0; //resets for if the user reruns the program
                     } 
 
                     // making sure file is valid before continuing
