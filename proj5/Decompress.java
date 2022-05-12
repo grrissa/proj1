@@ -137,7 +137,6 @@ public class Decompress {
                     //if code is not in dictionary
                     } else {
                         output.print(q +  q.charAt(0));
-                        System.out.print(q +  q.charAt(0));
                         dic.add(num_of_dic, q +  q.charAt(0));
                         num_of_dic++;
                     }

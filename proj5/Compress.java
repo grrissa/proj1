@@ -107,7 +107,9 @@ public class Compress {
     }
 
     public static boolean isPrime(int n){
-
+    /*
+        method that returns whether the number is a prime number or not
+    */
         if (n <= 1) return false;
         if (n <= 3) return true;
          
@@ -121,7 +123,9 @@ public class Compress {
     }
 
     public static int nextPrime(int N) {
-    
+    /*
+        method that returns the next prime integer
+    */
         if (N <= 1)
             return 2;
      
